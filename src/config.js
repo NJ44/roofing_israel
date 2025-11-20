@@ -5,8 +5,8 @@ export const config = {
   PRIMARY_COLOR: "{{PRIMARY_COLOR}}", // hex color, e.g., "#0066CC"
   ACCENT_COLOR: "{{ACCENT_COLOR}}", // hex color, e.g., "#FF6B6B"
   ADDRESS_LINE: "{{ADDRESS_LINE}}",
-  CITY: "{{CITY}}",
-  PHONE: "{{PHONE}}",
+  CITY: "California",
+  PHONE: "0546728171",
   EMAIL: "{{EMAIL}}",
   LOGO_URL: "{{LOGO_URL}}", // optional
   GOOGLE_MAP_EMBED_SRC: "{{GOOGLE_MAP_IFRAME_SRC}}",

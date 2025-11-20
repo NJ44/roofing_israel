@@ -13,6 +13,7 @@ const MapEmbed = () => {
 
   return (
     <motion.section 
+      id="map"
       className="py-20 bg-white"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}

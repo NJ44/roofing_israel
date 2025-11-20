@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon, Heart } from 'lucide-react';
 import { config } from '../../config';
@@ -29,6 +30,7 @@ const footerLinks = [
       { title: 'Location', href: '#contact' },
       { title: 'Contact Us', href: '#contact' },
       { title: 'Book Appointment', href: '#contact' },
+      { title: 'Blog', href: '/blog' },
     ],
   },
   {
@@ -86,15 +88,21 @@ export function FooterSection() {
                 <ul className="text-gray-400 mt-4 space-y-2 text-sm">
                   {section.links.map((link) => {
                     const Icon = link.icon;
+                    const isExternal = link.href.startsWith('#') || link.href.startsWith('http');
+                    const LinkComponent = isExternal ? 'a' : Link;
+                    const linkProps = isExternal 
+                      ? { href: link.href }
+                      : { to: link.href };
+                    
                     return (
                       <li key={link.title}>
-                        <a
-                          href={link.href}
+                        <LinkComponent
+                          {...linkProps}
                           className="hover:text-white inline-flex items-center transition-all duration-300"
                         >
                           {Icon && <Icon className="me-1 size-4" />}
                           {link.title}
-                        </a>
+                        </LinkComponent>
                       </li>
                     );
                   })}

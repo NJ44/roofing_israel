@@ -70,7 +70,7 @@ const FAQItem = ({ faq, isOpen, onToggle }) => {
 }
 
 const FAQ = () => {
-  const [openId, setOpenId] = useState(1) // First FAQ open by default
+  const [openId, setOpenId] = useState(null) // All FAQs closed by default
 
   const handleToggle = (id) => {
     setOpenId(openId === id ? null : id)

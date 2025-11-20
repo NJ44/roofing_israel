@@ -11,6 +11,8 @@ import SEO from './components/SEO'
 import GeneralDentistry from './pages/GeneralDentistry'
 import CosmeticWhitening from './pages/CosmeticWhitening'
 import SpecializedCare from './pages/SpecializedCare'
+import Blog from './pages/Blog'
+import OurPractice from './pages/OurPractice'
 import RoutineCleaningsExams from './pages/services/RoutineCleaningsExams'
 import FillingsRestorations from './pages/services/FillingsRestorations'
 import RootCanalTherapy from './pages/services/RootCanalTherapy'
@@ -72,6 +74,8 @@ function App() {
           <Route path="/general-dentistry" element={<GeneralDentistry />} />
           <Route path="/cosmetic-whitening" element={<CosmeticWhitening />} />
           <Route path="/specialized-care" element={<SpecializedCare />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/our-practice" element={<OurPractice />} />
           {/* General Dentistry Services */}
           <Route path="/general-dentistry/routine-cleanings-exams" element={<RoutineCleaningsExams />} />
           <Route path="/general-dentistry/fillings-restorations" element={<FillingsRestorations />} />

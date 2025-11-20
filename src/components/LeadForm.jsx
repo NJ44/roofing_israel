@@ -107,7 +107,7 @@ const LeadForm = () => {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-2xl p-3 md:p-4 max-w-md mx-auto">
+    <div className="bg-white rounded-2xl shadow-2xl p-3 md:p-4 max-w-sm mx-auto">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Request an Appointment</h2>
       
       {submitStatus === 'success' ? (
@@ -234,22 +234,10 @@ const LeadForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-primary text-white py-1.5 rounded-lg font-semibold text-xs hover:bg-opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary text-white py-3 rounded-lg font-semibold text-sm hover:bg-opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Submitting...' : 'Request appointment'}
           </button>
-
-          <p className="text-xs text-gray-500 text-center">
-            We'll reply within 24 hours.
-          </p>
-
-          <p className="text-xs text-gray-500 text-center">
-            We'll never share your info. See{' '}
-            <a href="#privacy" className="text-primary hover:underline">
-              privacy policy
-            </a>
-            .
-          </p>
         </form>
       )}
     </div>

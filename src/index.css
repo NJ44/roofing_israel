@@ -4,7 +4,7 @@
 
 :root {
   --primary-color: #0066CC;
-  --accent-color: #FF6B6B;
+  --accent-color: #0066CC;
 }
 
 * {
@@ -112,16 +112,20 @@ iframe[src*="retellai.com"] {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
   border: none !important;
   overflow: hidden !important;
-  max-height: 500px !important;
-  height: 500px !important;
+  max-height: 400px !important;
+  height: 400px !important;
+  max-width: 350px !important;
+  width: 350px !important;
 }
 
 /* Reduce chat window height on mobile */
 @media (max-width: 768px) {
   #retell-widget-container iframe,
   [data-retell-widget] iframe {
-    max-height: 400px !important;
-    height: 400px !important;
+    max-height: 350px !important;
+    height: 350px !important;
+    max-width: calc(100vw - 40px) !important;
+    width: calc(100vw - 40px) !important;
   }
 }
 
@@ -196,5 +200,138 @@ iframe[src*="retellai.com"] {
 [data-retell-widget] {
   z-index: 9999 !important;
   pointer-events: auto !important;
+}
+
+/* Professional Button Hover Animations */
+.btn-primary,
+a[class*="bg-primary"],
+button[class*="bg-primary"] {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
+}
+
+.btn-primary:hover,
+a[class*="bg-primary"]:hover:not(:disabled),
+button[class*="bg-primary"]:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.4);
+  background-color: rgba(0, 102, 204, 0.95) !important;
+}
+
+.btn-primary:active,
+a[class*="bg-primary"]:active:not(:disabled),
+button[class*="bg-primary"]:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+}
+
+/* Accent button hover effects */
+.btn-accent,
+a[class*="bg-accent"],
+button[class*="bg-accent"] {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+}
+
+.btn-accent:hover,
+a[class*="bg-accent"]:hover:not(:disabled),
+button[class*="bg-accent"]:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+  background-color: rgba(255, 107, 107, 0.95) !important;
+}
+
+.btn-accent:active,
+a[class*="bg-accent"]:active:not(:disabled),
+button[class*="bg-accent"]:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+/* White/outline button hover effects */
+a[class*="bg-white"][class*="text-primary"],
+button[class*="bg-white"][class*="text-primary"] {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+a[class*="bg-white"][class*="text-primary"]:hover,
+button[class*="bg-white"][class*="text-primary"]:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+a[class*="bg-white"][class*="text-primary"]:active,
+button[class*="bg-white"][class*="text-primary"]:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Gray/secondary button hover effects */
+a[class*="bg-gray"],
+button[class*="bg-gray"] {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+a[class*="bg-gray"]:hover:not(:disabled),
+button[class*="bg-gray"]:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+a[class*="bg-gray"]:active:not(:disabled),
+button[class*="bg-gray"]:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transition for all rounded buttons */
+a[class*="rounded-full"],
+button[class*="rounded-full"],
+a[class*="rounded-lg"],
+button[class*="rounded-lg"] {
+  overflow: hidden;
+}
+
+/* Disable animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-accent,
+  a[class*="bg-primary"],
+  a[class*="bg-accent"],
+  a[class*="bg-white"],
+  a[class*="bg-gray"],
+  button[class*="bg-primary"],
+  button[class*="bg-accent"],
+  button[class*="bg-white"],
+  button[class*="bg-gray"] {
+    transition: background-color 0.2s ease !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  .btn-primary:hover,
+  .btn-accent:hover,
+  a[class*="bg-primary"]:hover,
+  a[class*="bg-accent"]:hover,
+  a[class*="bg-white"]:hover,
+  a[class*="bg-gray"]:hover,
+  button[class*="bg-primary"]:hover,
+  button[class*="bg-accent"]:hover,
+  button[class*="bg-white"]:hover,
+  button[class*="bg-gray"]:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
 }
 
