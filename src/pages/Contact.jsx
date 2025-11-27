@@ -93,7 +93,7 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Request an Appointment</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Get a Free Quote</h2>
               
               {submitStatus === 'success' ? (
                 <div className="text-center py-8">

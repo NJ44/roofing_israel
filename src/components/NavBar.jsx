@@ -43,7 +43,8 @@ function NavBar({ className }) {
   return (
     <div
       className={cn(
-        "fixed top-[52px] inset-x-0 z-50 px-4",
+        "fixed inset-x-0 z-50 px-4 transition-all duration-500 ease-in-out",
+        isScrolled ? "top-[15px]" : "top-[52px]",
         className
       )}
     >
@@ -89,7 +90,7 @@ function NavBar({ className }) {
               <ProductItem
                 title="General Dentistry"
                 href="/general-dentistry"
-                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=200&h=120&fit=crop"
+                src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=200&h=120&fit=crop"
                 description="Comprehensive dental care for the whole family"
                 onClick={() => handleLinkClick("/general-dentistry")}
               />
@@ -221,7 +222,10 @@ function NavBar({ className }) {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[100px] bg-white z-40 overflow-y-auto">
+        <div className={cn(
+          "md:hidden fixed inset-0 bg-white z-40 overflow-y-auto transition-all duration-500 ease-in-out",
+          isScrolled ? "top-[63px]" : "top-[100px]"
+        )}>
           <div className="px-4 py-6 space-y-4">
             {/* Services Section */}
             <div>
@@ -388,7 +392,10 @@ function NavBar({ className }) {
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 top-[100px]"
+          className={cn(
+            "md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 transition-all duration-500 ease-in-out",
+            isScrolled ? "top-[63px]" : "top-[100px]"
+          )}
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}

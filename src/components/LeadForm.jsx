@@ -108,7 +108,7 @@ const LeadForm = () => {
 
   return (
     <div id="appointment-form" className="bg-white rounded-2xl shadow-2xl p-3 md:p-4 max-w-sm mx-auto">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Request an Appointment</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Get a Free Quote</h2>
       
       {submitStatus === 'success' ? (
         <div className="text-center py-8">

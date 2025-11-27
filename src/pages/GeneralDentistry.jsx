@@ -16,7 +16,7 @@ const GeneralDentistry = () => {
           transition={{ duration: 0.8 }}
         >
           <img
-            src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1200&h=600&fit=crop"
+            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1200&h=600&fit=crop"
             alt="General Dentistry"
             className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
           />

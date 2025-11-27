@@ -11,7 +11,7 @@ const ServicesTimeline = () => {
         <div>
           <div className="mb-6">
             <img
-              src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&h=400&fit=crop"
+              src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&h=400&fit=crop"
               alt="General Dentistry"
               className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"
             />
