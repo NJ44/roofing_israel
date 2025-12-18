@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 import SEO from './components/SEO'
+import { LetsWorkTogether } from '@/components/ui/lets-work-section'
 import GeneralDentistry from './pages/GeneralDentistry'
 import CosmeticWhitening from './pages/CosmeticWhitening'
 import SpecializedCare from './pages/SpecializedCare'
@@ -49,6 +50,7 @@ function HomePage() {
       <MapEmbed />
       <Testimonials />
       <FAQ />
+      <LetsWorkTogether />
     </>
   )
 }
