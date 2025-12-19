@@ -94,9 +94,6 @@ const FAQ = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-          <p className="text-xl text-gray-600">
-            Everything you need to know about our services
-          </p>
         </motion.div>
 
         <motion.div 

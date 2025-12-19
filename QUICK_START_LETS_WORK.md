@@ -102,3 +102,5 @@ If something isn't working:
 - Icons not showing → Check lucide-react is installed
 
 
+
+
