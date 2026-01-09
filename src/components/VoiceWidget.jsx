@@ -182,19 +182,21 @@ const VoiceWidget = () => {
       {/* Voice Widget Button */}
       <button
         onClick={toggleWidget}
-        className={`fixed bottom-6 right-6 z-[60] flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white shadow-2xl transition-all duration-500 ease-out hover:shadow-gray-500/50 hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90 opacity-0 pointer-events-none' : 'rotate-0 opacity-100'
+        className={`fixed bottom-8 right-8 z-[100] flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white shadow-2xl transition-all duration-500 ease-out hover:shadow-gray-500/50 hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90 opacity-0 pointer-events-none' : 'rotate-0 opacity-100'
           }`}
         aria-label="Open voice widget"
+        style={{ position: 'fixed', bottom: '2rem', right: '2rem' }}
       >
         <Phone className="w-7 h-7" strokeWidth={2} />
       </button>
 
       {/* Voice Widget Panel */}
       <div
-        className={`fixed bottom-6 right-6 z-[60] transition-all duration-500 ease-out ${isOpen
+        className={`fixed bottom-8 right-8 z-[100] transition-all duration-500 ease-out ${isOpen
           ? 'opacity-100 scale-100 translate-y-0'
           : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
           }`}
+        style={{ position: 'fixed', bottom: '2rem', right: '2rem' }}
       >
         <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden min-w-[320px]">
           {/* Header */}

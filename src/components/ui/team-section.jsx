@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom'
 
 const members = [
     {
-        name: 'Sarah Johnson',
-        role: 'Senior Partner - Business Law',
-        avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces',
+        name: 'Sarah Myer',
+        role: 'Project Manager',
+        avatar: '/team-member-1.png',
         link: '#',
     },
     {
         name: 'Michael Chen',
-        role: 'Partner - Criminal Defense',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces',
+        role: 'Master Installer',
+        avatar: '/team-member-2.png',
         link: '#',
     },
     {
         name: 'James Wilson',
-        role: 'Partner - Personal Injury',
-        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=faces',
+        role: 'Safety Supervisor',
+        avatar: '/team-member-3.png',
         link: '#',
     },
 ]
@@ -28,10 +28,10 @@ export default function TeamSection() {
             <div className="mx-auto max-w-5xl px-6">
                 <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
                     <div className="sm:w-2/5">
-                        <h2 className="text-4xl font-bold">Our legal team</h2>
+                        <h2 className="text-4xl font-bold">Our Project Team</h2>
                     </div>
                     <div className="mt-6 sm:mt-0">
-                        <p>Our experienced attorneys bring decades of combined legal expertise to every case, ensuring you receive the highest quality representation and strategic counsel.</p>
+                        <p>Our experienced professionals bring decades of roofing expertise to every project, ensuring you receive the highest quality installation and service.</p>
                     </div>
                 </div>
                 <div className="mt-12 md:mt-24">
@@ -48,7 +48,7 @@ export default function TeamSection() {
                                         <span className="text-muted-foreground inline-block translate-y-6 text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">{member.role}</span>
                                         <Link to={member.link} className="group-hover:text-primary dark:group-hover:text-primary inline-block translate-y-8 text-sm tracking-wide opacity-0 transition-all duration-500 hover:underline group-hover:translate-y-0 group-hover:opacity-100">
                                             {' '}
-                                            Linktree
+                                            Contact
                                         </Link>
                                     </div>
                                 </div>

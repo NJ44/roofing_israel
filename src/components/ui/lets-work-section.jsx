@@ -59,7 +59,7 @@ export function LetsWorkTogether() {
                 transitionDelay: "200ms",
               }}
             >
-              Let's meet
+              Let's Talk
             </h3>
           </div>
 
@@ -97,7 +97,7 @@ export function LetsWorkTogether() {
                   color: isButtonHovered ? "var(--background)" : "var(--foreground)",
                 }}
               >
-                Book an appointment
+                Schedule Inspection
               </span>
               <ArrowUpRight
                 className="size-4 transition-all duration-500 sm:size-5"
@@ -161,7 +161,7 @@ export function LetsWorkTogether() {
             <span className="relative inline-flex size-2 rounded-full bg-blue-500" />
           </span>
           <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
-            Book Your Next Visit
+            Get Your Free Inspection
           </span>
         </div>
 
@@ -189,7 +189,7 @@ export function LetsWorkTogether() {
                     transform: isHovered && !isClicked ? "translateY(-8%)" : "translateY(0)",
                   }}
                 >
-                  Book an
+                  Schedule an
                 </span>
               </span>
               <span className="block">
@@ -199,7 +199,7 @@ export function LetsWorkTogether() {
                     transform: isHovered && !isClicked ? "translateY(-8%)" : "translateY(0)",
                   }}
                 >
-                  <span className="text-muted-foreground/60">appointment</span>
+                  <span className="text-muted-foreground/60">Inspection</span>
                 </span>
               </span>
             </h2>

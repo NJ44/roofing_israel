@@ -32,19 +32,19 @@ const Hero = () => {
         <div className="container mx-auto px-4 py-16 relative z-10 h-full flex items-center">
           <div className="max-w-3xl">
             {/* Text Content */}
-            <div className="text-white space-y-6 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-md">
+            <div className="text-white space-y-4 animate-fade-in">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-md">
                 Protecting Your Home With Quality Roofing
               </h1>
-              <h2 className="text-xl md:text-2xl text-gray-200 font-normal max-w-2xl drop-shadow-sm">
+              <h2 className="text-lg md:text-xl text-gray-200 font-normal max-w-2xl drop-shadow-sm">
                 New Jersey's most trusted experts for residential and commercial roofing solutions.
               </h2>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-8 pointer-events-auto">
+              <div className="flex flex-col sm:flex-row gap-4 pt-6 pointer-events-auto">
                 <a
                   href="#contact"
-                  className="bg-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-orange-600 transition-all text-center shadow-lg transform hover:-translate-y-1"
+                  className="bg-primary text-white px-6 py-3 rounded-full font-semibold text-base hover:bg-orange-600 transition-all text-center shadow-lg transform hover:-translate-y-1"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToElement('#contact', { offset: -100 });
@@ -54,7 +54,7 @@ const Hero = () => {
                 </a>
                 <a
                   href="#services"
-                  className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all text-center shadow-md"
+                  className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 py-3 rounded-full font-semibold text-base hover:bg-white/20 transition-all text-center shadow-md"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToElement('#services', { offset: -100 });
