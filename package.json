@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Production-ready responsive law firm website",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

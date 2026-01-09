@@ -41,6 +41,7 @@ export function RainBackground({
     thunderVolume = 0.5,
     thunderDelay = 2,
     className,
+    contentClassName,
     children,
 }) {
     const [raindrops, setRaindrops] = useState([])
@@ -233,7 +234,7 @@ export function RainBackground({
             </div>
 
             {/* Content */}
-            <div className="relative z-10">{children}</div>
+            <div className={cn("relative z-10", contentClassName)}>{children}</div>
         </div>
     )
 }

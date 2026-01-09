@@ -24,9 +24,10 @@ const Hero = () => {
         lightningEnabled={true}
         lightningFrequency={15}
         thunderEnabled={false}
+        contentClassName="h-full w-full"
       >
         {/* Overlay - darker for white text visibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent pointer-events-none z-0"></div>
 
         <div className="container mx-auto px-4 py-16 relative z-10 h-full flex items-center">
           <div className="max-w-3xl">

@@ -144,31 +144,31 @@ function NavBar({ className }) {
           <MenuItem setActive={setActive} active={active} item={t.nav.aboutUs}>
             <div className="text-sm grid grid-cols-2 gap-10 p-4">
               <ProductItem
-                title="Our Firm"
+                title="Our Company"
                 href="#home"
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=280&h=140&fit=crop"
-                description="Experienced legal representation with a dedicated team"
+                src="/hero-bg.png"
+                description="Trusted roofing experts serving New Jersey with integrity"
                 onClick={() => scrollToSection("#home")}
               />
               <ProductItem
                 title="Client Reviews"
                 href="/reviews"
-                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=280&h=140&fit=crop"
-                description="See what our clients say about their experience"
+                src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=280&h=140&fit=crop"
+                description="See what our happy customers say about our work"
                 onClick={() => handleLinkClick("/reviews")}
               />
               <ProductItem
                 title="Location"
                 href="#map"
-                src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=280&h=140&fit=crop"
-                description="Visit us at our convenient location in the city"
+                src="https://images.unsplash.com/photo-1591955506264-3f51322ab8af?w=280&h=140&fit=crop"
+                description="Serving North, Central, and South Jersey"
                 onClick={() => scrollToSection("#map")}
               />
               <ProductItem
                 title="FAQ"
                 href="#faq"
-                src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=280&h=140&fit=crop"
-                description="Common questions about our services and policies"
+                src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=280&h=140&fit=crop"
+                description="Answers to common questions about roofing projects"
                 onClick={() => scrollToSection("#faq")}
               />
             </div>
@@ -322,7 +322,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Our Firm
+                  Our Company
                 </a>
                 <a
                   href="/reviews"

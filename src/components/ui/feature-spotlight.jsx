@@ -46,7 +46,7 @@ export function FeaturedSpotlight({
                 {/* Title - responsive text sizes */}
                 <h2 className="relative">
                     <span
-                        className="block text-4xl font-normal tracking-tight text-foreground transition-all duration-700 sm:text-5xl md:text-5xl lg:text-6xl"
+                        className="block text-3xl font-normal tracking-tight text-foreground transition-all duration-700 sm:text-4xl md:text-4xl lg:text-5xl"
                         style={{
                             transform: isHovered ? "translateY(-2px)" : "translateY(0)",
                             transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -55,7 +55,7 @@ export function FeaturedSpotlight({
                         {titlePrefix}
                     </span>
                     <span
-                        className="block text-4xl font-normal tracking-tight text-foreground transition-all duration-700 sm:text-5xl md:text-5xl lg:text-6xl"
+                        className="block text-3xl font-normal tracking-tight text-foreground transition-all duration-700 sm:text-4xl md:text-4xl lg:text-5xl"
                         style={{
                             transform: isHovered ? "translateX(12px)" : "translateX(0)",
                             transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
