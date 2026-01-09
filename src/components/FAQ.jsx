@@ -4,33 +4,33 @@ import { motion } from 'framer-motion'
 const faqs = [
   {
     id: 1,
-    question: 'Do you offer free consultations?',
-    answer: 'Yes, we offer free initial consultations for all new clients. During this consultation, we will discuss your case, answer your questions, and explain how we can help. Please call us to schedule your free consultation.',
+    question: 'Do you offer free estimates?',
+    answer: 'Yes, we provide free, no-obligation estimates for all roofing projects. Contact us to schedule an inspection and quote.',
   },
   {
     id: 2,
-    question: 'What are your office hours?',
-    answer: 'Our office is open Monday through Friday from 9:00 AM to 6:00 PM, and Saturday from 10:00 AM to 2:00 PM. We are closed on Sundays. Emergency consultations may be available outside these hours for urgent legal matters.',
+    question: 'How long does a roof replacement take?',
+    answer: 'Most residential roof replacements are completed within 1-2 days, depending on the size and complexity of the roof and weather conditions.',
   },
   {
     id: 3,
-    question: 'How quickly can you help with an urgent legal matter?',
-    answer: 'For urgent legal matters, please call our office immediately. We understand that legal issues often require immediate attention, and we make every effort to respond to urgent matters as quickly as possible. We offer same-day consultations for emergencies when possible.',
+    question: 'Are you licensed and insured?',
+    answer: 'Absolutely. We are fully licensed and carry comprehensive liability and worker\'s compensation insurance for your protection.',
   },
   {
     id: 4,
-    question: 'Do you handle cases outside of your local area?',
-    answer: 'Yes, we handle cases throughout the state and can work with clients regardless of their location. We also have relationships with attorneys in other states for matters that require out-of-state representation. Please contact us to discuss your specific situation.',
+    question: 'Do you offer warranties?',
+    answer: 'Yes, we offer industry-leading material warranties and workmanship guarantees on all our installations.',
   },
   {
     id: 5,
-    question: 'What should I bring to my first consultation?',
-    answer: 'Please bring any relevant documents related to your case, such as contracts, correspondence, court documents, police reports, or medical records. Also bring a valid ID and any information about the other parties involved. If you\'re unsure what to bring, our staff can guide you when you schedule your appointment.',
+    question: 'What happens if we find rot during the project?',
+    answer: 'If we discover damaged wood or structural issues, we will document it with photos, notify you immediately, and provide a clear price for the necessary repairs before proceeding.',
   },
   {
     id: 6,
-    question: 'How do you charge for legal services?',
-    answer: 'Our fee structure varies depending on the type of case. We offer hourly billing, flat fees, and contingency fee arrangements (where applicable, such as personal injury cases). During your free consultation, we will discuss our fee structure and payment options in detail.',
+    question: 'Do you handle insurance claims?',
+    answer: 'Yes, we have extensive experience working with insurance companies and can help guide you through the claims process for storm damage.',
   },
 ]
 
@@ -45,9 +45,8 @@ const FAQItem = ({ faq, isOpen, onToggle }) => {
       >
         <span className="font-semibold text-gray-800 pr-4">{faq.question}</span>
         <svg
-          className={`w-5 h-5 text-primary flex-shrink-0 transition-transform ${
-            isOpen ? 'transform rotate-180' : ''
-          }`}
+          className={`w-5 h-5 text-primary flex-shrink-0 transition-transform ${isOpen ? 'transform rotate-180' : ''
+            }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -57,9 +56,8 @@ const FAQItem = ({ faq, isOpen, onToggle }) => {
       </button>
       <div
         id={`faq-answer-${faq.id}`}
-        className={`overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
         role="region"
         aria-hidden={!isOpen}
       >
@@ -77,8 +75,8 @@ const FAQ = () => {
   }
 
   return (
-    <motion.section 
-      id="faq" 
+    <motion.section
+      id="faq"
       className="py-20 bg-white"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +84,7 @@ const FAQ = () => {
       transition={{ duration: 0.8 }}
     >
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -94,10 +92,10 @@ const FAQ = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-          <p className="text-gray-600">Get answers to common questions about our legal services</p>
+          <p className="text-gray-600">Get answers to common questions about our roofing services</p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

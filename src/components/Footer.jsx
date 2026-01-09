@@ -6,14 +6,14 @@ const Footer = () => {
   return (
     <>
       <FooterSection />
-      
+
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'LegalService',
+            '@type': 'RoofingContractor',
             name: config.BUSINESS_NAME,
             description: config.TAGLINE,
             address: {

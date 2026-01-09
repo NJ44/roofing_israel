@@ -182,7 +182,7 @@ const VoiceWidget = () => {
       {/* Voice Widget Button */}
       <button
         onClick={toggleWidget}
-        className={`fixed bottom-6 right-6 z-[60] flex items-center justify-center w-16 h-16 rounded-full bg-black text-white shadow-2xl transition-all duration-500 ease-out hover:shadow-gray-500/50 hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90 opacity-0 pointer-events-none' : 'rotate-0 opacity-100'
+        className={`fixed bottom-6 right-6 z-[60] flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white shadow-2xl transition-all duration-500 ease-out hover:shadow-gray-500/50 hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90 opacity-0 pointer-events-none' : 'rotate-0 opacity-100'
           }`}
         aria-label="Open voice widget"
       >
@@ -192,20 +192,20 @@ const VoiceWidget = () => {
       {/* Voice Widget Panel */}
       <div
         className={`fixed bottom-6 right-6 z-[60] transition-all duration-500 ease-out ${isOpen
-            ? 'opacity-100 scale-100 translate-y-0'
-            : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
+          ? 'opacity-100 scale-100 translate-y-0'
+          : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
           }`}
       >
         <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden min-w-[320px]">
           {/* Header */}
-          <div className="bg-black px-6 py-4 flex items-center justify-between">
+          <div className="bg-primary px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                 <Phone className="w-5 h-5 text-white" strokeWidth={2.5} />
               </div>
               <div>
-                <h3 className="text-white font-semibold text-base">Legal Assistant</h3>
-                <p className="text-gray-300 text-xs">
+                <h3 className="text-white font-semibold text-base">Roofing Assistant</h3>
+                <p className="text-white/80 text-xs">
                   {isCalling ? 'Call in progress' : 'Tap to speak'}
                 </p>
               </div>
@@ -222,11 +222,11 @@ const VoiceWidget = () => {
           {/* Content */}
           <div className="p-6">
             <div className="flex flex-col items-center gap-4">
-              {/* Lawyer Image */}
-              <div className="w-32 h-32 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center shadow-lg">
+              {/* Roofing Assistant Image */}
+              <div className="w-32 h-32 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center shadow-lg border-4 border-primary/10">
                 <img
-                  src="/lawyer_avatar.png"
-                  alt="Lawyer"
+                  src="/roofing_assistant.png"
+                  alt="Roofing Assistant"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -234,7 +234,7 @@ const VoiceWidget = () => {
               {/* Status Text */}
               <div className="text-center">
                 <p className="text-gray-700 font-medium text-sm">
-                  {isCalling ? formatDuration(callDuration) : 'Tap to speak'}
+                  {isCalling ? formatDuration(callDuration) : 'Speak with our AI Roofing Expert'}
                 </p>
               </div>
 
@@ -243,8 +243,8 @@ const VoiceWidget = () => {
                 onClick={handleCall}
                 disabled={isCalling && !retellClient}
                 className={`w-full py-3 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 ${isCalling
-                    ? 'bg-red-500 hover:bg-red-600 text-white'
-                    : 'bg-black hover:bg-gray-800 text-white'
+                  ? 'bg-red-500 hover:bg-red-600 text-white'
+                  : 'bg-primary hover:bg-orange-700 text-white'
                   }`}
               >
                 {isCalling ? (
@@ -255,7 +255,7 @@ const VoiceWidget = () => {
                 ) : (
                   <>
                     <Mic className="w-4 h-4" strokeWidth={2.5} />
-                    Call us here
+                    Start Conversation
                   </>
                 )}
               </button>

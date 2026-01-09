@@ -7,29 +7,28 @@ const Services = () => {
 
   const services = [
     {
-      titlePrefix: "Business",
-      titleSuffix: "Law",
-      description: "Comprehensive legal guidance for your company. From entity formation to complex contracts and compliance, we protect your interests and support your growth.",
-      imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop",
+      titlePrefix: "Roof",
+      titleSuffix: "Repair",
+      description: "Fast and reliable repairs for leaks, storm damage, and wear and tear. We restore your roof's integrity quickly and efficiently.",
+      imageUrl: "/roof-repair.png",
       index: "01",
-      link: "/business-law"
+      link: "/contact"
     },
     {
-      titlePrefix: "Personal",
-      titleSuffix: "Injury",
-      description: "Aggressive representation for accident victims. We fight for the compensation you deserve, handling everything from motor vehicle accidents to workplace injuries.",
-      imageUrl: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
+      titlePrefix: "Roof",
+      titleSuffix: "Replacement",
+      description: "Complete roof replacement services using high-quality shingles, metal, or tile. Enhance your home's curb appeal and protection.",
+      imageUrl: "/roof-replacement.png",
       index: "02",
-      link: "/personal-injury"
+      link: "/contact"
     },
     {
-      titlePrefix: "Criminal",
-      titleSuffix: "Defense",
-      description: "Experienced defense for state and federal charges. We provide a thorough investigation and vigorous representation to protect your rights and freedom.",
-      // Using an alternative legal/courtroom image
-      imageUrl: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800&h=600&fit=crop",
+      titlePrefix: "Commercial",
+      titleSuffix: "Roofing",
+      description: "Expert roofing solutions for businesses and industrial properties. Flat roofs, TPO, EPDM, and metal roofing systems.",
+      imageUrl: "/commercial-roofing.png",
       index: "03",
-      link: "/criminal-defense"
+      link: "/contact"
     }
   ];
 

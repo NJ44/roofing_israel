@@ -11,46 +11,46 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center pt-20"
       style={{
-        backgroundImage: 'url(/lawyer_office_hero_standing.png)',
+        backgroundImage: 'url(/hero-bg.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      {/* Overlay - lighter for black text visibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent"></div>
+      {/* Overlay - darker for white text visibility */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent"></div>
 
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="max-w-3xl">
           {/* Text Content */}
-          <div className="text-black space-y-4 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black">
-              Experienced Legal Representation for Your Rights
+          <div className="text-white space-y-6 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-md">
+              Protecting Your Home With Quality Roofing
             </h1>
-            <h2 className="text-xl md:text-2xl text-black font-normal max-w-2xl">
-              Proven results, dedicated advocacy, and a team that fights for you.
+            <h2 className="text-xl md:text-2xl text-gray-200 font-normal max-w-2xl drop-shadow-sm">
+              New Jersey's most trusted experts for residential and commercial roofing solutions.
             </h2>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-6">
+            <div className="flex flex-col sm:flex-row gap-4 pt-8">
               <a
                 href="#contact"
-                className="bg-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-opacity-90 transition-colors text-center shadow-lg"
+                className="bg-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-orange-600 transition-all text-center shadow-lg transform hover:-translate-y-1"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToElement('#contact', { offset: -100 });
                 }}
               >
-                {t.hero.requestAppointment}
+                Get A Free Quote
               </a>
               <a
                 href="#services"
-                className="bg-white text-primary px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition-colors text-center shadow-md border border-gray-100"
+                className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all text-center shadow-md"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToElement('#services', { offset: -100 });
                 }}
               >
-                {t.hero.ourServices}
+                Our Services
               </a>
             </div>
           </div>

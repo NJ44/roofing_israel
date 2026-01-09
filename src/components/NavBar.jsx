@@ -111,46 +111,32 @@ function NavBar({ className }) {
           <MenuItem setActive={setActive} active={active} item={t.nav.services}>
             <div className="text-sm grid grid-cols-2 gap-6 p-4">
               <ProductItem
-                title="Business Law"
-                href="/business-law"
-                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=200&h=120&fit=crop"
-                description="Corporate law, contracts, and business formation"
-                onClick={() => handleLinkClick("/business-law")}
+                title="Roof Repair"
+                href="#"
+                src="/roof-repair.png"
+                description="Fast and reliable leak repairs"
+                onClick={() => handleLinkClick("/contact")} // Direct to contact for now
               />
               <ProductItem
-                title="Personal Injury"
-                href="/personal-injury"
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=200&h=120&fit=crop"
-                description="Accident claims and injury compensation"
-                onClick={() => handleLinkClick("/personal-injury")}
+                title="Roof Replacement"
+                href="#"
+                src="/roof-replacement.png"
+                description="Complete roof replacement services"
+                onClick={() => handleLinkClick("/contact")}
               />
               <ProductItem
-                title="Criminal Defense"
-                href="/criminal-defense"
-                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=200&h=120&fit=crop"
-                description="Aggressive defense for all criminal charges"
-                onClick={() => handleLinkClick("/criminal-defense")}
+                title="Commercial Roofing"
+                href="#"
+                src="/commercial-roofing.png"
+                description="Business and industrial roofing"
+                onClick={() => handleLinkClick("/contact")}
               />
               <ProductItem
-                title="Family Law"
-                href="/criminal-defense"
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=200&h=120&fit=crop"
-                description="Divorce, custody, and family legal matters"
-                onClick={() => handleLinkClick("/criminal-defense")}
-              />
-              <ProductItem
-                title="Estate Planning"
-                href="/business-law"
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=200&h=120&fit=crop"
-                description="Wills, trusts, and estate administration"
-                onClick={() => handleLinkClick("/business-law")}
-              />
-              <ProductItem
-                title="Real Estate Law"
-                href="/business-law"
-                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=200&h=120&fit=crop"
-                description="Property transactions and real estate disputes"
-                onClick={() => handleLinkClick("/business-law")}
+                title="Gutter Installation"
+                href="#"
+                src="https://images.unsplash.com/photo-1621251786576-9d628d067468?w=200&h=120&fit=crop"
+                description="Seamless gutter systems"
+                onClick={() => handleLinkClick("/contact")}
               />
             </div>
           </MenuItem>
@@ -292,34 +278,34 @@ function NavBar({ className }) {
               <h3 className="text-lg font-semibold text-black mb-3">{t.nav.services}</h3>
               <div className="space-y-2">
                 <a
-                  href="/business-law"
+                  href="/contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/business-law"));
+                    handleMobileLinkClick(() => handleLinkClick("/contact"));
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Business Law
+                  Roof Repair
                 </a>
                 <a
-                  href="/personal-injury"
+                  href="/contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/personal-injury"));
+                    handleMobileLinkClick(() => handleLinkClick("/contact"));
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Personal Injury
+                  Roof Replacement
                 </a>
                 <a
-                  href="/criminal-defense"
+                  href="/contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/criminal-defense"));
+                    handleMobileLinkClick(() => handleLinkClick("/contact"));
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Criminal Defense
+                  Commercial Roofing
                 </a>
               </div>
             </div>

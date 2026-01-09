@@ -8,9 +8,10 @@ const footerLinks = [
   {
     label: 'Services',
     links: [
-      { title: 'Business Law', href: '/business-law' },
-      { title: 'Personal Injury', href: '/personal-injury' },
-      { title: 'Criminal Defense', href: '/criminal-defense' },
+      { title: 'Roof Repair', href: '/contact' },
+      { title: 'Roof Replacement', href: '/contact' },
+      { title: 'Commercial Roofing', href: '/contact' },
+      { title: 'Gutter Installation', href: '/contact' },
     ],
   },
   {
