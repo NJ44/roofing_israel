@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { config, sampleReviews } from '../config'
 import ReviewModal from './ReviewModal'
 import CommentModal from './CommentModal'
+import { useTranslation } from '../hooks/useTranslation'
 
 const Reviews = () => {
+  const { t } = useTranslation()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false)
@@ -34,7 +36,7 @@ const Reviews = () => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    return date.toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' })
   }
 
   const renderStars = (rating) => {
@@ -54,9 +56,9 @@ const Reviews = () => {
     <section id="reviews" className="py-20 bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">What Our Patients Say</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">{t.reviews.title}</h2>
           <p className="text-xl text-gray-600">
-            Real reviews from real patients
+            {t.reviews.subtitle}
           </p>
         </div>
 
@@ -103,9 +105,8 @@ const Reviews = () => {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentIndex ? 'bg-primary' : 'bg-gray-300'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${index === currentIndex ? 'bg-primary' : 'bg-gray-300'
+                      }`}
                     aria-label={`Go to review ${index + 1}`}
                     aria-selected={index === currentIndex}
                     role="tab"
@@ -135,7 +136,7 @@ const Reviews = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-primary hover:underline font-semibold"
                 >
-                  Read more reviews
+                  {t.reviews.readMore}
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -144,7 +145,7 @@ const Reviews = () => {
                   onClick={() => setIsReviewModalOpen(true)}
                   className="inline-flex items-center bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
                 >
-                  Write a Review
+                  {t.reviews.writeReview}
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                   </svg>
@@ -158,7 +159,7 @@ const Reviews = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-primary hover:underline font-semibold"
                 >
-                  Read more reviews
+                  {t.reviews.readMore}
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -167,7 +168,7 @@ const Reviews = () => {
                   onClick={() => setIsReviewModalOpen(true)}
                   className="inline-flex items-center bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
                 >
-                  Write a Review
+                  {t.reviews.writeReview}
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                   </svg>
@@ -201,4 +202,3 @@ const Reviews = () => {
 }
 
 export default Reviews
-

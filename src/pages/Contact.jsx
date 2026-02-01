@@ -3,7 +3,10 @@ import { motion } from 'framer-motion'
 import { config } from '../config'
 import { scrollToElement } from '../hooks/useLenis'
 
+import { useTranslation } from '../hooks/useTranslation'
+
 const Contact = () => {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -69,7 +72,7 @@ const Contact = () => {
     <div className="min-h-screen bg-white pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,10 +80,10 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
-            Contact Us
+            {t.nav.contact}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get in touch with us. We're here to help with all your dental care needs.
+            צור קשר איתנו. אנחנו כאן לכל דרישות הקירוי שלך.
           </p>
         </motion.div>
 
@@ -93,18 +96,18 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Get a Free Quote</h2>
-              
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">{t.form.getFreeQuote}</h2>
+
               {submitStatus === 'success' ? (
                 <div className="text-center py-8">
-                  <div className="text-green-600 text-lg font-semibold mb-2">✓ Thank you!</div>
-                  <p className="text-gray-600">We'll get back to you soon.</p>
+                  <div className="text-green-600 text-lg font-semibold mb-2">✓ {t.form.successTitle}</div>
+                  <p className="text-gray-600">{t.form.successMessage}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-xs font-medium text-gray-700 mb-1">
-                      Full name
+                      {t.form.fullName}
                     </label>
                     <input
                       type="text"
@@ -114,13 +117,13 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="John Doe"
+                      placeholder="ישראל ישראלי"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="email" className="block text-xs font-medium text-gray-700 mb-1">
-                      What's your email?
+                      {t.form.email}
                     </label>
                     <input
                       type="email"
@@ -130,13 +133,13 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="john@example.com"
+                      placeholder="israel@example.com"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="phone" className="block text-xs font-medium text-gray-700 mb-1">
-                      Phone
+                      {t.form.phone}
                     </label>
                     <input
                       type="tel"
@@ -146,14 +149,14 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="(555) 123-4567"
+                      placeholder="050-1234567"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="date" className="block text-xs font-medium text-gray-700 mb-1">
-                        Preferred date
+                        תאריך מועדף
                       </label>
                       <input
                         type="date"
@@ -166,7 +169,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <label htmlFor="time" className="block text-xs font-medium text-gray-700 mb-1">
-                        Preferred time
+                        {t.form.preferredTime}
                       </label>
                       <input
                         type="time"
@@ -181,7 +184,7 @@ const Contact = () => {
 
                   <div>
                     <label htmlFor="message" className="block text-xs font-medium text-gray-700 mb-1">
-                      Message (optional)
+                      {t.form.message}
                     </label>
                     <textarea
                       id="message"
@@ -190,13 +193,13 @@ const Contact = () => {
                       onChange={handleChange}
                       rows={3}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-                      placeholder="Tell us about your dental needs..."
+                      placeholder="ספר לנו על הפרויקט שלך..."
                     />
                   </div>
 
                   {submitStatus === 'error' && (
                     <div className="text-red-600 text-xs">
-                      Something went wrong. Please try again.
+                      {t.form.error}
                     </div>
                   )}
 
@@ -205,7 +208,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     className="w-full bg-primary text-white py-3 rounded-lg font-semibold text-sm hover:bg-opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Submitting...' : 'Request appointment'}
+                    {isSubmitting ? t.form.submitting : t.form.submit}
                   </button>
                 </form>
               )}
@@ -222,7 +225,7 @@ const Contact = () => {
           >
             {/* Contact Info */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">{t.footer.contactUs}</h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <svg className="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,7 +233,7 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
+                    <h3 className="font-semibold text-gray-800 mb-1">{t.footer.items.location}</h3>
                     <p className="text-gray-600">
                       {config.ADDRESS_LINE && !config.ADDRESS_LINE.startsWith('{{') ? config.ADDRESS_LINE : '123 Main Street'}<br />
                       {config.CITY}
@@ -243,7 +246,7 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
+                    <h3 className="font-semibold text-gray-800 mb-1">{t.form.phone}</h3>
                     <a href={`tel:${config.PHONE}`} className="text-primary hover:underline">
                       {config.PHONE}
                     </a>
@@ -255,13 +258,13 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
+                    <h3 className="font-semibold text-gray-800 mb-1">{t.form.email}</h3>
                     {config.EMAIL && !config.EMAIL.startsWith('{{') ? (
                       <a href={`mailto:${config.EMAIL}`} className="text-primary hover:underline">
                         {config.EMAIL}
                       </a>
                     ) : (
-                      <p className="text-gray-600">info@dentalcare.com</p>
+                      <p className="text-gray-600">info@apexroofing.com</p>
                     )}
                   </div>
                 </div>
@@ -303,7 +306,7 @@ const Contact = () => {
                       d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                     />
                   </svg>
-                  Open in Google Maps
+                  פתח בגוגל מפות
                 </a>
               </div>
             </div>

@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Mic, Phone, X, PhoneOff } from 'lucide-react'
 import { RetellWebClient } from 'retell-client-js-sdk'
 
+import { useTranslation } from '../hooks/useTranslation'
+
 const VoiceWidget = () => {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [isCalling, setIsCalling] = useState(false)
   const [retellClient, setRetellClient] = useState(null)
@@ -182,21 +185,21 @@ const VoiceWidget = () => {
       {/* Voice Widget Button */}
       <button
         onClick={toggleWidget}
-        className={`fixed bottom-8 right-8 z-[100] flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white shadow-2xl transition-all duration-500 ease-out hover:shadow-gray-500/50 hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90 opacity-0 pointer-events-none' : 'rotate-0 opacity-100'
+        className={`fixed bottom-8 left-8 z-[100] flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white shadow-2xl transition-all duration-500 ease-out hover:shadow-gray-500/50 hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90 opacity-0 pointer-events-none' : 'rotate-0 opacity-100'
           }`}
         aria-label="Open voice widget"
-        style={{ position: 'fixed', bottom: '2rem', right: '2rem' }}
+        style={{ position: 'fixed', bottom: '2rem', left: '2rem' }}
       >
         <Phone className="w-7 h-7" strokeWidth={2} />
       </button>
 
       {/* Voice Widget Panel */}
       <div
-        className={`fixed bottom-8 right-8 z-[100] transition-all duration-500 ease-out ${isOpen
+        className={`fixed bottom-8 left-8 z-[100] transition-all duration-500 ease-out ${isOpen
           ? 'opacity-100 scale-100 translate-y-0'
           : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
           }`}
-        style={{ position: 'fixed', bottom: '2rem', right: '2rem' }}
+        style={{ position: 'fixed', bottom: '2rem', left: '2rem' }}
       >
         <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden min-w-[320px]">
           {/* Header */}
@@ -206,9 +209,9 @@ const VoiceWidget = () => {
                 <Phone className="w-5 h-5 text-white" strokeWidth={2.5} />
               </div>
               <div>
-                <h3 className="text-white font-semibold text-base">Roofing Assistant</h3>
+                <h3 className="text-white font-semibold text-base">{t.voiceWidget.title}</h3>
                 <p className="text-white/80 text-xs">
-                  {isCalling ? 'Call in progress' : 'Tap to speak'}
+                  {isCalling ? t.voiceWidget.callInProgress : t.voiceWidget.subtitle}
                 </p>
               </div>
             </div>
@@ -236,7 +239,7 @@ const VoiceWidget = () => {
               {/* Status Text */}
               <div className="text-center">
                 <p className="text-gray-700 font-medium text-sm">
-                  {isCalling ? formatDuration(callDuration) : 'Speak with our AI Roofing Expert'}
+                  {isCalling ? formatDuration(callDuration) : t.voiceWidget.statusIdle}
                 </p>
               </div>
 
@@ -252,12 +255,12 @@ const VoiceWidget = () => {
                 {isCalling ? (
                   <>
                     <PhoneOff className="w-4 h-4" strokeWidth={2.5} />
-                    End Call
+                    {t.voiceWidget.endCall}
                   </>
                 ) : (
                   <>
                     <Mic className="w-4 h-4" strokeWidth={2.5} />
-                    Start Conversation
+                    {t.voiceWidget.startConversation}
                   </>
                 )}
               </button>

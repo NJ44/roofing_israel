@@ -12,8 +12,8 @@ export const useLanguage = () => {
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
-    // Get language from localStorage or default to 'en'
-    return localStorage.getItem('language') || 'en';
+    // Get language from localStorage or default to 'he'
+    return localStorage.getItem('language') || 'he';
   });
 
   useEffect(() => {
@@ -21,10 +21,12 @@ export const LanguageProvider = ({ children }) => {
     localStorage.setItem('language', language);
     // Update HTML lang attribute
     document.documentElement.lang = language;
+    // Update HTML dir attribute for RTL
+    document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
   }, [language]);
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'es' : 'en');
+    setLanguage(prev => prev === 'he' ? 'en' : 'he');
   };
 
   const value = {

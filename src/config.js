@@ -1,12 +1,12 @@
 // CLIENT VARIABLES - Replace these with actual values
 export const config = {
-  BUSINESS_NAME: "Apex Roofing Solutions",
-  TAGLINE: "Trusted Roofing Services for Home and Business",
+  BUSINESS_NAME: "אפקס פתרונות קירוי",
+  TAGLINE: "שירותי קירוי אמינים לבית ולעסק",
   PRIMARY_COLOR: "#ea580c", // Orange-600
   ACCENT_COLOR: "#0f172a", // Slate-900
-  ADDRESS_LINE: "123 Roofing Way",
-  CITY: "Newark, NJ",
-  PHONE: "555-0123",
+  ADDRESS_LINE: "דרך בגין 123",
+  CITY: "תל אביב",
+  PHONE: "050-1234567",
   EMAIL: "contact@apexroofing.com",
   LOGO_URL: "", // optional
   GOOGLE_MAP_EMBED_SRC: "",
@@ -14,37 +14,37 @@ export const config = {
   FORM_WEBHOOK_URL: "",
   GOOGLE_BUSINESS_PROFILE_URL: "", // optional
   LOCATIONS: [
-    { name: "Main Office", slug: "main-office", address: "123 Roofing Way", city: "Newark", phone: "555-0123", image: "/location-main.png" },
-    { name: "North Jersey", slug: "north-jersey", address: "456 Summit Ave", city: "Jersey City", phone: "555-0124", image: "/location-north.png" },
-    { name: "Central Jersey", slug: "central-jersey", address: "789 Beach Blvd", city: "Old Bridge", phone: "555-0125", image: "/location-central.png" }
+    { name: "משרד ראשי", slug: "main-office", address: "דרך בגין 123", city: "תל אביב", phone: "050-1234567", image: "/location-main.png" },
+    { name: "צפון", slug: "north", address: "שדרות הנשיא 45", city: "חיפה", phone: "050-1234568", image: "/location-north.png" },
+    { name: "דרום", slug: "south", address: "רחוב הרצל 78", city: "באר שבע", phone: "050-1234569", image: "/location-central.png" }
   ]
 };
 
 // Sample reviews data (used if GOOGLE_REVIEWS_DATA is not provided)
 export const sampleReviews = [
   {
-    author: "Sarah Johnson",
+    author: "שרה כהן",
     rating: 5,
     date: "2024-03-15",
-    text: "Apex Roofing did an amazing job on our new roof! The team was professional, fast, and left the property spotless. Highly recommend!",
+    text: "אפקס עשו עבודה מדהימה על הגג החדש שלנו! הצוות היה מקצועי, מהיר והשאיר את הנכס נקי לחלוטין. ממליצה בחום!",
   },
   {
-    author: "Michael Chen",
+    author: "מיכאל לוי",
     rating: 5,
     date: "2024-03-10",
-    text: "Great experience with their repair service. They found the leak quickly and fixed it for a fair price. Very honest company.",
+    text: "חוויה נהדרת עם שירות התיקונים שלהם. מצאו את הדליפה מהר ותיקנו במחיר הוגן. חברה אמינה מאוד.",
   },
   {
-    author: "Emily Rodriguez",
+    author: "אמילי רודריגז",
     rating: 5,
     date: "2024-02-22",
-    text: "Best roofing contractor in NJ. They replaced our commercial roof on time and on budget. Excellent communication throughout.",
+    text: "קבלן הגגות הטוב ביותר. החליפו את הגג המסחרי שלנו בזמן ובתקציב. תקשורת מצוינת לכל אורך הדרך.",
   },
   {
-    author: "David Thompson",
+    author: "דוד צור",
     rating: 5,
     date: "2024-02-15",
-    text: "Professional, reliable, and high quality work. The new gutters look great and function perfectly. Will use them again.",
+    text: "מקצועיים, אמינים ועבודה איכותית. המרזבים החדשים נראים נהדר ומתפקדים מושלם. אשתמש בהם שוב.",
   },
 ];
 

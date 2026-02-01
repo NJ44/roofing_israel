@@ -16,6 +16,7 @@ const Hero = () => {
         backgroundPosition: 'center',
       }}
     >
+    >
       <RainBackground
         intensity={100}
         speed={0.5}
@@ -34,10 +35,10 @@ const Hero = () => {
             {/* Text Content */}
             <div className="text-white space-y-4 animate-fade-in">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-md">
-                Protecting Your Home With Quality Roofing
+                {t.hero.title}
               </h1>
               <h2 className="text-lg md:text-xl text-gray-200 font-normal max-w-2xl drop-shadow-sm">
-                New Jersey's most trusted experts for residential and commercial roofing solutions.
+                {t.hero.subtitle}
               </h2>
 
               {/* CTAs */}
@@ -50,7 +51,7 @@ const Hero = () => {
                     scrollToElement('#contact', { offset: -100 });
                   }}
                 >
-                  Get A Free Quote
+                  {t.hero.cta}
                 </a>
                 <a
                   href="#services"
@@ -60,7 +61,7 @@ const Hero = () => {
                     scrollToElement('#services', { offset: -100 });
                   }}
                 >
-                  Our Services
+                  {t.hero.services}
                 </a>
               </div>
             </div>

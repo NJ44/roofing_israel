@@ -19,8 +19,8 @@ export const MenuItem = ({
   const [isHoveringDropdown, setIsHoveringDropdown] = React.useState(false);
 
   return (
-    <div 
-      onMouseEnter={() => setActive(item)} 
+    <div
+      onMouseEnter={() => setActive(item)}
       onMouseLeave={() => {
         // Only close if not hovering over the dropdown
         if (!isHoveringDropdown) {
@@ -42,7 +42,7 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div 
+            <div
               className="absolute top-[calc(100%_+_1.5rem)] left-1/2 transform -translate-x-1/2"
               onMouseEnter={() => {
                 setIsHoveringDropdown(true);
@@ -86,8 +86,7 @@ export const Menu = ({
         // Close dropdown when mouse leaves the entire nav area
         setActive(null);
       }}
-      className={`relative rounded-lg border border-transparent dark:bg-white dark:border-gray-300 bg-white shadow-2xl flex items-center space-x-3 px-7 py-2 max-w-4xl mx-auto ${className || ''}`}
-      style={{ transform: 'scale(1.1)' }}
+      className={`relative rounded-lg border border-transparent dark:bg-white dark:border-gray-300 bg-white shadow-2xl flex items-center space-x-3 px-6 py-3 max-w-4xl mx-auto ${className || ''}`}
     >
       {children}
     </nav>
@@ -109,9 +108,9 @@ export const ProductItem = ({
   };
 
   return (
-    <a 
-      href={href} 
-      onClick={handleClick} 
+    <a
+      href={href}
+      onClick={handleClick}
       className="flex space-x-2 p-3 rounded-lg transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-900 group"
       style={{ transform: 'none' }}
     >

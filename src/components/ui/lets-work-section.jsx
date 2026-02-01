@@ -3,12 +3,16 @@
 import React, { useState } from "react"
 import { ArrowUpRight, Calendar } from "lucide-react"
 
+import { useTranslation } from "../../hooks/useTranslation";
+
 export function LetsWorkTogether() {
   const [isHovered, setIsHovered] = useState(false)
   const [isClicked, setIsClicked] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [isButtonHovered, setIsButtonHovered] = useState(false)
   const [isQuoteButtonHovered, setIsQuoteButtonHovered] = useState(false)
+
+  const { t } = useTranslation();
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -49,7 +53,7 @@ export function LetsWorkTogether() {
                 transitionDelay: "100ms",
               }}
             >
-              Perfect
+              {t.letsWork.perfect}
             </span>
             <h3
               className="text-3xl font-light tracking-tight text-foreground transition-all duration-500 sm:text-4xl"
@@ -59,7 +63,7 @@ export function LetsWorkTogether() {
                 transitionDelay: "200ms",
               }}
             >
-              Let's Talk
+              {t.letsWork.letsTalk}
             </h3>
           </div>
 
@@ -97,7 +101,7 @@ export function LetsWorkTogether() {
                   color: isButtonHovered ? "#ffffff" : "var(--foreground)",
                 }}
               >
-                Schedule Inspection
+                {t.letsWork.scheduleInspection}
               </span>
               <ArrowUpRight
                 className="size-4 transition-all duration-500 sm:size-5"
@@ -134,7 +138,7 @@ export function LetsWorkTogether() {
                   color: "#ffffff",
                 }}
               >
-                Get a Quote
+                {t.letsWork.getQuote}
               </span>
               <ArrowUpRight
                 className="size-4 transition-all duration-500 sm:size-5"
@@ -161,7 +165,7 @@ export function LetsWorkTogether() {
             <span className="relative inline-flex size-2 rounded-full bg-orange-500" />
           </span>
           <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
-            Get Your Free Inspection
+            {t.letsWork.getFreeInspection}
           </span>
         </div>
 
@@ -189,7 +193,7 @@ export function LetsWorkTogether() {
                     transform: isHovered && !isClicked ? "translateY(-8%)" : "translateY(0)",
                   }}
                 >
-                  Schedule an
+                  {t.letsWork.scheduleAn}
                 </span>
               </span>
               <span className="block">
@@ -199,7 +203,7 @@ export function LetsWorkTogether() {
                     transform: isHovered && !isClicked ? "translateY(-8%)" : "translateY(0)",
                   }}
                 >
-                  <span className="text-[var(--primary-color)]">Inspection</span>
+                  <span className="text-[var(--primary-color)]">{t.letsWork.inspection}</span>
                 </span>
               </span>
             </h2>

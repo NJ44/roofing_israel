@@ -5,6 +5,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { scrollToElement } from "../hooks/useLenis";
 import { cn } from "../lib/utils";
 import { config } from "../config";
+import InspectionDrawer from "./InspectionDrawer";
 
 import { useTranslation } from "../hooks/useTranslation";
 
@@ -12,6 +13,7 @@ function NavBar({ className }) {
   const [active, setActive] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -92,39 +94,39 @@ function NavBar({ className }) {
           <MenuItem setActive={setActive} active={active} item={t.nav.services}>
             <div className="text-sm grid grid-cols-2 gap-6 p-4">
               <ProductItem
-                title="Roof Repair"
+                title={t.nav.items.roofRepair}
                 href="#"
                 src="/roof-repair.png"
-                description="Fast and reliable leak repairs"
+                description={t.nav.items.repairDesc}
                 onClick={() => handleLinkClick("/contact")} // Direct to contact for now
               />
               <ProductItem
-                title="Roof Replacement"
+                title={t.nav.items.roofReplacement}
                 href="#"
                 src="/roof-replacement.png"
-                description="Complete roof replacement services"
+                description={t.nav.items.replaceDesc}
                 onClick={() => handleLinkClick("/contact")}
               />
               <ProductItem
-                title="Commercial Roofing"
+                title={t.nav.items.commercialRoofing}
                 href="#"
                 src="/commercial-roofing.png"
-                description="Business and industrial roofing"
+                description={t.nav.items.commercialDesc}
                 onClick={() => handleLinkClick("/contact")}
                 className="hidden" // Hiding commercial for now based on user request
               />
               <ProductItem
-                title="Storm Restoration"
+                title={t.nav.items.stormRestoration}
                 href="#"
                 src="/storm-damage.png"
-                description="Insurance claim assistance"
+                description={t.nav.items.stormDesc}
                 onClick={() => handleLinkClick("/contact")}
               />
               <ProductItem
-                title="Gutter Installation"
+                title={t.nav.items.gutterInstallation}
                 href="#"
                 src="https://images.unsplash.com/photo-1621251786576-9d628d067468?w=200&h=120&fit=crop"
-                description="Seamless gutter systems"
+                description={t.nav.items.gutterDesc}
                 onClick={() => handleLinkClick("/contact")}
               />
             </div>
@@ -133,35 +135,46 @@ function NavBar({ className }) {
           <MenuItem setActive={setActive} active={active} item={t.nav.aboutUs}>
             <div className="text-sm grid grid-cols-2 gap-10 p-4">
               <ProductItem
-                title="Our Company"
+                title={t.nav.items.ourCompany}
                 href="#home"
                 src="/hero-bg.png"
-                description="Trusted roofing experts serving New Jersey with integrity"
+                description={t.nav.items.companyDesc}
                 onClick={() => scrollToSection("#home")}
               />
               <ProductItem
-                title="Client Reviews"
+                title={t.nav.items.clientReviews}
                 href="/reviews"
                 src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=280&h=140&fit=crop"
-                description="See what our happy customers say about our work"
+                description={t.nav.items.reviewsDesc}
                 onClick={() => handleLinkClick("/reviews")}
               />
               <ProductItem
-                title="Location"
+                title={t.nav.items.location}
                 href="#map"
                 src="https://images.unsplash.com/photo-1591955506264-3f51322ab8af?w=280&h=140&fit=crop"
-                description="Serving North, Central, and South Jersey"
+                description={t.nav.items.locationDesc}
                 onClick={() => scrollToSection("#map")}
               />
               <ProductItem
-                title="FAQ"
+                title={t.nav.items.faq}
                 href="#faq"
                 src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=280&h=140&fit=crop"
-                description="Answers to common questions about roofing projects"
+                description={t.nav.items.faqDesc}
                 onClick={() => scrollToSection("#faq")}
               />
             </div>
           </MenuItem>
+
+          <a
+            href="/blog"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick("/contact"); // Redirecting to contact for now as blog page might not exist
+            }}
+            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+          >
+            {t.nav.blog}
+          </a>
 
           <a
             href="/contact"
@@ -177,20 +190,12 @@ function NavBar({ className }) {
 
         {/* Desktop Book Now Button */}
         <div className="hidden md:flex items-center ml-auto gap-3">
-          <a
-            href="#appointment-form"
-            onClick={(e) => {
-              e.preventDefault();
-              if (window.location.pathname === '/') {
-                scrollToSection("#appointment-form");
-              } else {
-                window.location.href = '/#appointment-form';
-              }
-            }}
+          <button
+            onClick={() => setIsDrawerOpen(true)}
             className="bg-primary text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap text-sm"
           >
             {t.nav.bookNow}
-          </a>
+          </button>
         </div>
 
         {/* Mobile Burger Menu Button - positioned on the right */}
@@ -226,7 +231,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Roof Repair
+                  {t.nav.items.roofRepair}
                 </a>
                 <a
                   href="/contact"
@@ -236,7 +241,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Roof Replacement
+                  {t.nav.items.roofReplacement}
                 </a>
                 <a
                   href="/contact"
@@ -246,7 +251,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Storm Restoration
+                  {t.nav.items.stormRestoration}
                 </a>
               </div>
             </div>
@@ -263,7 +268,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Our Company
+                  {t.nav.items.ourCompany}
                 </a>
                 <a
                   href="/reviews"
@@ -273,7 +278,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Client Reviews
+                  {t.nav.items.clientReviews}
                 </a>
                 <a
                   href="#map"
@@ -283,7 +288,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  Location
+                  {t.nav.items.location}
                 </a>
                 <a
                   href="#faq"
@@ -293,7 +298,7 @@ function NavBar({ className }) {
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
-                  FAQ
+                  {t.nav.items.faq}
                 </a>
               </div>
             </div>
@@ -322,6 +327,23 @@ function NavBar({ className }) {
               </div>
             </div>
 
+            {/* Articles Section */}
+            <div>
+              <h3 className="text-lg font-semibold text-black mb-3">{t.nav.blog}</h3>
+              <div className="space-y-2">
+                <a
+                  href="/blog"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleMobileLinkClick(() => handleLinkClick("/contact"));
+                  }}
+                  className="block py-2 text-black hover:text-primary transition-colors"
+                >
+                  {t.nav.blog}
+                </a>
+              </div>
+            </div>
+
             {/* Contact Section */}
             <div>
               <h3 className="text-lg font-semibold text-black mb-3">{t.nav.contact}</h3>
@@ -339,26 +361,17 @@ function NavBar({ className }) {
               </div>
             </div>
 
-
-
             {/* Mobile Book Now Button */}
             <div className="pt-4">
-              <a
-                href="#appointment-form"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleMobileLinkClick(() => {
-                    if (window.location.pathname === '/') {
-                      scrollToSection("#appointment-form");
-                    } else {
-                      window.location.href = '/#appointment-form';
-                    }
-                  });
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsDrawerOpen(true);
                 }}
                 className="block w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-opacity-90 transition-colors"
               >
                 {t.nav.bookNow}
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -374,6 +387,8 @@ function NavBar({ className }) {
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
+
+      <InspectionDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
     </div>
   );
 }

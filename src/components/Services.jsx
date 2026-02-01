@@ -2,30 +2,33 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FeaturedSpotlight } from "./ui/feature-spotlight";
 
+import { useTranslation } from "../hooks/useTranslation";
+
 const Services = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const services = [
     {
-      titlePrefix: "Roof",
-      titleSuffix: "Repair",
-      description: "Fast response for leaks, missing shingles, and wear. We restore your home's protection and curb appeal efficiently.",
+      titlePrefix: t.services.repair.titlePrefix,
+      titleSuffix: t.services.repair.titleSuffix,
+      description: t.services.repair.description,
       imageUrl: "/roof-repair.png",
       index: "01",
       link: "/contact"
     },
     {
-      titlePrefix: "Roof",
-      titleSuffix: "Replacement",
-      description: "Full residential roof replacements with premium asphalt, metal, or tile options. Lifetime warranties available.",
+      titlePrefix: t.services.replacement.titlePrefix,
+      titleSuffix: t.services.replacement.titleSuffix,
+      description: t.services.replacement.description,
       imageUrl: "/roof-replacement.png",
       index: "02",
       link: "/contact"
     },
     {
-      titlePrefix: "Storm",
-      titleSuffix: "Restoration",
-      description: "Expert damage assessment and restoration after severe weather. We help navigate insurance claims for your peace of mind.",
+      titlePrefix: t.services.restoration.titlePrefix,
+      titleSuffix: t.services.restoration.titleSuffix,
+      description: t.services.restoration.description,
       imageUrl: "/storm-damage.png",
       index: "03",
       link: "/contact"
@@ -35,7 +38,7 @@ const Services = () => {
   return (
     <section id="services" className="w-full bg-white py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto space-y-24">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">{t.services.title}</h2>
         {services.map((service) => (
           <div key={service.index} className="flex justify-center">
             <FeaturedSpotlight

@@ -4,45 +4,51 @@ import { motion, useReducedMotion } from 'motion/react';
 import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon, Heart } from 'lucide-react';
 import { config } from '../../config';
 
-const footerLinks = [
-  {
-    label: 'Services',
-    links: [
-      { title: 'Roof Repair', href: '/contact' },
-      { title: 'Roof Replacement', href: '/contact' },
-      { title: 'Commercial Roofing', href: '/contact' },
-      { title: 'Gutter Installation', href: '/contact' },
-    ],
-  },
-  {
-    label: 'Company',
-    links: [
-      { title: 'FAQs', href: '#faq' },
-      { title: 'About Us', href: '#home' },
-      { title: 'Privacy Policy', href: '#privacy' },
-      { title: 'Terms of Services', href: '#terms' },
-    ],
-  },
-  {
-    label: 'Resources',
-    links: [
-      { title: 'Client Reviews', href: '#reviews' },
-      { title: 'Location', href: '#contact' },
-      { title: 'Contact Us', href: '#contact' },
-      { title: 'Schedule Consultation', href: '#contact' },
-      { title: 'Blog', href: '/blog' },
-    ],
-  },
-  {
-    label: 'Social Links',
-    links: [
-      { title: 'Facebook', href: '#', icon: FacebookIcon },
-      { title: 'Instagram', href: '#', icon: InstagramIcon },
-      { title: 'Youtube', href: '#', icon: YoutubeIcon },
-      { title: 'LinkedIn', href: '#', icon: LinkedinIcon },
-    ],
-  },
-];
+import { useTranslation } from '../../hooks/useTranslation';
+
+const useFooterLinks = () => {
+  const { t } = useTranslation();
+
+  return [
+    {
+      label: t.footer.servicesSection,
+      links: [
+        { title: t.nav.items.roofRepair, href: '/contact' },
+        { title: t.nav.items.roofReplacement, href: '/contact' },
+        { title: t.nav.items.commercialRoofing, href: '/contact' },
+        { title: t.nav.items.gutterInstallation, href: '/contact' },
+      ],
+    },
+    {
+      label: t.footer.companySection,
+      links: [
+        { title: t.nav.items.faq, href: '#faq' },
+        { title: t.nav.aboutUs, href: '#home' },
+        { title: t.footer.privacyPolicy, href: '#privacy' },
+        { title: t.footer.termsOfService, href: '#terms' },
+      ],
+    },
+    {
+      label: t.footer.resourcesSection,
+      links: [
+        { title: t.nav.items.clientReviews, href: '#reviews' },
+        { title: t.nav.items.location, href: '#contact' },
+        { title: t.footer.contactUs, href: '#contact' },
+        { title: t.footer.scheduleConsultation, href: '#contact' },
+        { title: t.nav.blog, href: '/blog' },
+      ],
+    },
+    {
+      label: t.footer.socialSection,
+      links: [
+        { title: 'Facebook', href: '#', icon: FacebookIcon },
+        { title: 'Instagram', href: '#', icon: InstagramIcon },
+        { title: 'Youtube', href: '#', icon: YoutubeIcon },
+        { title: 'LinkedIn', href: '#', icon: LinkedinIcon },
+      ],
+    },
+  ];
+};
 
 function AnimatedContainer({ className, delay = 0.1, children }) {
   const shouldReduceMotion = useReducedMotion();
@@ -65,6 +71,9 @@ function AnimatedContainer({ className, delay = 0.1, children }) {
 }
 
 export function FooterSection() {
+  const footerLinks = useFooterLinks();
+  const { t } = useTranslation();
+
   return (
     <footer
       id="contact"
@@ -77,7 +86,7 @@ export function FooterSection() {
           <AnimatedContainer className="space-y-4">
             <Heart className="size-8 text-white" />
             <p className="text-gray-400 mt-8 text-sm md:mt-0">
-              © {new Date().getFullYear()} {config.BUSINESS_NAME}. All rights reserved.
+              © {new Date().getFullYear()} {config.BUSINESS_NAME}. {t.footer.rights}
             </p>
           </AnimatedContainer>
 

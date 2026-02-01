@@ -1,94 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { TestimonialsColumn } from "./ui/testimonials-columns-1";
 import { motion } from "motion/react";
 import { config } from "../config";
 import ReviewModal from "./ReviewModal";
 import CommentModal from "./CommentModal";
-
-// Testimonials data with Unsplash images (Google Reviews style)
-const testimonials = [
-  {
-    text: "Excellent legal representation! The team was professional, responsive, and helped me win my case. Highly recommend!",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces",
-    name: "Sarah Johnson",
-    role: "Client",
-    rating: 5,
-    date: "2 weeks ago",
-  },
-  {
-    text: "Best law firm I've worked with. They explained everything clearly, kept me informed throughout the process, and achieved great results.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces",
-    name: "Michael Chen",
-    role: "Client",
-    rating: 5,
-    date: "1 month ago",
-  },
-  {
-    text: "Emergency consultation was available same day. Professional and caring. Thank you for the quick help during a difficult time!",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces",
-    name: "Emily Rodriguez",
-    role: "Client",
-    rating: 5,
-    date: "3 weeks ago",
-  },
-  {
-    text: "Great experience from start to finish. The attorneys are knowledgeable, the staff is welcoming, and they explained everything clearly.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces",
-    name: "David Thompson",
-    role: "Client",
-    rating: 5,
-    date: "1 month ago",
-  },
-  {
-    text: "The personal injury case exceeded my expectations. They fought hard for me and secured a settlement I never thought possible!",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces",
-    name: "Jessica Martinez",
-    role: "Client",
-    rating: 5,
-    date: "2 months ago",
-  },
-  {
-    text: "I was facing serious criminal charges, but the team made me feel at ease. They built a strong defense and got the charges reduced significantly.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces",
-    name: "Amanda Wilson",
-    role: "Client",
-    rating: 5,
-    date: "3 weeks ago",
-  },
-  {
-    text: "The business law services I received were exceptional. They helped me navigate complex contracts and protected my interests perfectly.",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=faces",
-    name: "Rachel Brown",
-    role: "Client",
-    rating: 5,
-    date: "1 month ago",
-  },
-  {
-    text: "Professional, friendly, and efficient. They got me in quickly for my urgent legal matter and resolved the issue perfectly.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=faces",
-    name: "James Anderson",
-    role: "Client",
-    rating: 5,
-    date: "2 weeks ago",
-  },
-  {
-    text: "My estate planning was handled with exceptional care. The entire process was well explained and the documents were thorough.",
-    image: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=100&h=100&fit=crop&crop=faces",
-    name: "Lisa Garcia",
-    role: "Client",
-    rating: 5,
-    date: "2 months ago",
-  },
-];
-
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+import { useTranslation } from "../hooks/useTranslation";
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
+
+  // Testimonials data mapped from translations
+  // We use the images from the original English array to keep the UI consistent
+  const images = [
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=100&h=100&fit=crop&crop=faces",
+  ];
+
+  const testimonials = useMemo(() => {
+    return (t.testimonials || []).map((item, index) => ({
+      ...item,
+      image: images[index % images.length],
+      rating: 5
+    }));
+  }, [t.testimonials]);
+
+  const firstColumn = testimonials.slice(0, 2);
+  const secondColumn = testimonials.slice(2, 4);
+  const thirdColumn = testimonials.slice(4, 6);
 
   return (
     <section id="reviews" className="bg-background my-20 relative py-20">
@@ -106,7 +54,7 @@ const Testimonials = () => {
             </div>
           </div>
           <h2 className="text-4xl font-bold tracking-tighter mt-5 text-center">
-            What our clients say
+            {t.reviews.title}
           </h2>
         </motion.div>
         <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
@@ -125,34 +73,34 @@ const Testimonials = () => {
         {/* CTA Link */}
         <div className="text-center mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           {config.GOOGLE_BUSINESS_PROFILE_URL &&
-          !config.GOOGLE_BUSINESS_PROFILE_URL.startsWith("{{") ? (
+            !config.GOOGLE_BUSINESS_PROFILE_URL.startsWith("{{") ? (
             <>
-            <a
-              href={config.GOOGLE_BUSINESS_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:underline font-semibold"
-            >
-              Read more reviews
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <a
+                href={config.GOOGLE_BUSINESS_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary hover:underline font-semibold"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
+                {t.reviews.readMore}
+                <svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
               <button
                 onClick={() => setIsReviewModalOpen(true)}
                 className="inline-flex items-center bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
               >
-                Write a Review
+                {t.reviews.writeReview}
                 <svg
                   className="w-5 h-5 ml-2"
                   fill="none"
@@ -170,34 +118,34 @@ const Testimonials = () => {
             </>
           ) : (
             <>
-            <a
-              href={`https://www.google.com/search?q=${encodeURIComponent(
-                config.BUSINESS_NAME + " " + config.CITY
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:underline font-semibold"
-            >
-              Read more reviews
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <a
+                href={`https://www.google.com/search?q=${encodeURIComponent(
+                  config.BUSINESS_NAME + " " + config.CITY
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary hover:underline font-semibold"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
+                {t.reviews.readMore}
+                <svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
               <button
                 onClick={() => setIsReviewModalOpen(true)}
                 className="inline-flex items-center bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
               >
-                Write a Review
+                {t.reviews.writeReview}
                 <svg
                   className="w-5 h-5 ml-2"
                   fill="none"
