@@ -17,6 +17,9 @@ import Blog from './pages/Blog'
 import Reviews from './pages/Reviews'
 import Contact from './pages/Contact'
 import Location from './pages/Location'
+import Service from './pages/Service'
+import BlogPost from './pages/BlogPost'
+import ReviewForm from './pages/ReviewForm'
 import { useLenis } from './hooks/useLenis'
 import { scrollToTop } from './hooks/useLenis'
 import { config } from './config'
@@ -80,9 +83,12 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/feature-demo" element={<FeatureDemo />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/locations/:slug" element={<Location />} />
+          <Route path="/services/:slug" element={<Service />} />
+          <Route path="/leave-review" element={<ReviewForm />} />
         </Routes>
       </main>
       <Footer />

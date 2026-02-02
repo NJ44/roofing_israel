@@ -34,6 +34,7 @@ function NavBar({ className }) {
   };
 
   const handleLinkClick = (path) => {
+    console.log('Navigating to:', path); // Debug log
     navigate(path);
     setActive(null);
     setIsMobileMenuOpen(false);
@@ -95,85 +96,61 @@ function NavBar({ className }) {
             <div className="text-sm grid grid-cols-2 gap-6 p-4">
               <ProductItem
                 title={t.nav.items.roofRepair}
-                href="#"
+                href="/services/roof-repair"
                 src="/roof-repair.png"
                 description={t.nav.items.repairDesc}
-                onClick={() => handleLinkClick("/contact")} // Direct to contact for now
+                onClick={() => handleLinkClick("/services/roof-repair")}
               />
               <ProductItem
                 title={t.nav.items.roofReplacement}
-                href="#"
+                href="/services/roof-replacement"
                 src="/roof-replacement.png"
                 description={t.nav.items.replaceDesc}
-                onClick={() => handleLinkClick("/contact")}
+                onClick={() => handleLinkClick("/services/roof-replacement")}
               />
-              <ProductItem
-                title={t.nav.items.commercialRoofing}
-                href="#"
-                src="/commercial-roofing.png"
-                description={t.nav.items.commercialDesc}
-                onClick={() => handleLinkClick("/contact")}
-                className="hidden" // Hiding commercial for now based on user request
-              />
+
               <ProductItem
                 title={t.nav.items.stormRestoration}
-                href="#"
+                href="/services/storm-restoration"
                 src="/storm-damage.png"
                 description={t.nav.items.stormDesc}
-                onClick={() => handleLinkClick("/contact")}
+                onClick={() => handleLinkClick("/services/storm-restoration")}
               />
-              <ProductItem
-                title={t.nav.items.gutterInstallation}
-                href="#"
-                src="https://images.unsplash.com/photo-1621251786576-9d628d067468?w=200&h=120&fit=crop"
-                description={t.nav.items.gutterDesc}
-                onClick={() => handleLinkClick("/contact")}
-              />
+
             </div>
           </MenuItem>
 
-          <MenuItem setActive={setActive} active={active} item={t.nav.aboutUs}>
-            <div className="text-sm grid grid-cols-2 gap-10 p-4">
-              <ProductItem
-                title={t.nav.items.ourCompany}
-                href="#home"
-                src="/hero-bg.png"
-                description={t.nav.items.companyDesc}
-                onClick={() => scrollToSection("#home")}
-              />
-              <ProductItem
-                title={t.nav.items.clientReviews}
-                href="/reviews"
-                src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=280&h=140&fit=crop"
-                description={t.nav.items.reviewsDesc}
-                onClick={() => handleLinkClick("/reviews")}
-              />
-              <ProductItem
-                title={t.nav.items.location}
-                href="#map"
-                src="https://images.unsplash.com/photo-1591955506264-3f51322ab8af?w=280&h=140&fit=crop"
-                description={t.nav.items.locationDesc}
-                onClick={() => scrollToSection("#map")}
-              />
-              <ProductItem
-                title={t.nav.items.faq}
-                href="#faq"
-                src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=280&h=140&fit=crop"
-                description={t.nav.items.faqDesc}
-                onClick={() => scrollToSection("#faq")}
-              />
-            </div>
-          </MenuItem>
+          <a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#home");
+            }}
+            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+          >
+            {t.nav.aboutUs}
+          </a>
 
           <a
             href="/blog"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick("/contact"); // Redirecting to contact for now as blog page might not exist
+              handleLinkClick("/blog");
             }}
             className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
           >
             {t.nav.blog}
+          </a>
+
+          <a
+            href="/reviews"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick("/reviews");
+            }}
+            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+          >
+            {t.reviews.title}
           </a>
 
           <a
@@ -224,83 +201,51 @@ function NavBar({ className }) {
               <h3 className="text-lg font-semibold text-black mb-3">{t.nav.services}</h3>
               <div className="space-y-2">
                 <a
-                  href="/contact"
+                  href="/services/roof-repair"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/contact"));
+                    handleMobileLinkClick(() => handleLinkClick("/services/roof-repair"));
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
                   {t.nav.items.roofRepair}
                 </a>
                 <a
-                  href="/contact"
+                  href="/services/roof-replacement"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/contact"));
+                    handleMobileLinkClick(() => handleLinkClick("/services/roof-replacement"));
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
                   {t.nav.items.roofReplacement}
                 </a>
                 <a
-                  href="/contact"
+                  href="/services/storm-restoration"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/contact"));
+                    handleMobileLinkClick(() => handleLinkClick("/services/storm-restoration"));
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >
                   {t.nav.items.stormRestoration}
                 </a>
+
               </div>
             </div>
 
             {/* About Section */}
             <div>
-              <h3 className="text-lg font-semibold text-black mb-3">{t.nav.aboutUs}</h3>
-              <div className="space-y-2">
-                <a
-                  href="#home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => scrollToSection("#home"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
-                >
-                  {t.nav.items.ourCompany}
-                </a>
-                <a
-                  href="/reviews"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/reviews"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
-                >
-                  {t.nav.items.clientReviews}
-                </a>
-                <a
-                  href="#map"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => scrollToSection("#map"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
-                >
-                  {t.nav.items.location}
-                </a>
-                <a
-                  href="#faq"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => scrollToSection("#faq"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
-                >
-                  {t.nav.items.faq}
-                </a>
-              </div>
+              <a
+                href="#home"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMobileLinkClick(() => scrollToSection("#home"));
+                }}
+                className="block py-2 text-lg font-semibold text-black hover:text-primary transition-colors"
+              >
+                {t.nav.aboutUs}
+              </a>
             </div>
 
             {/* Locations Section */}
@@ -327,6 +272,20 @@ function NavBar({ className }) {
               </div>
             </div>
 
+            {/* Reviews Section */}
+            <div>
+              <a
+                href="/reviews"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMobileLinkClick(() => handleLinkClick("/reviews"));
+                }}
+                className="block py-2 text-lg font-semibold text-black hover:text-primary transition-colors"
+              >
+                {t.reviews.title}
+              </a>
+            </div>
+
             {/* Articles Section */}
             <div>
               <h3 className="text-lg font-semibold text-black mb-3">{t.nav.blog}</h3>
@@ -335,7 +294,7 @@ function NavBar({ className }) {
                   href="/blog"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/contact"));
+                    handleMobileLinkClick(() => handleLinkClick("/blog"));
                   }}
                   className="block py-2 text-black hover:text-primary transition-colors"
                 >

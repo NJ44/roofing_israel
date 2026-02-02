@@ -52,6 +52,16 @@ export const translations = {
             titlePrefix: "שיקום",
             titleSuffix: "נזקים",
             description: "הערכת נזקים ושיקום מומחה לאחר מזג אוויר סוער. אנו עוזרים להתנהל מול הביטוח לשקט הנפשי שלך."
+        },
+        commercial: {
+            titlePrefix: "קירוי",
+            titleSuffix: "משרדי ותעשייתי",
+            description: "פתרונות קירוי מקיפים לעסקים, מפעלים ומבני תעשייה. עמידות לאורך שנים ואחריות מלאה."
+        },
+        gutters: {
+            titlePrefix: "התקנת",
+            titleSuffix: "מרזבים",
+            description: "מערכות מרזבים מתקדמות למניעת נזקי מים ולשמירה על קירות הבית, הטיח והיסודות."
         }
     },
     footer: {
@@ -66,7 +76,7 @@ export const translations = {
         scheduleConsultation: "קבע ייעוץ"
     },
     form: {
-        getFreeQuote: "קבל בדיקה חינם",
+        getFreeQuote: "קבל הצעת מחיר",
         fullName: "שם מלא",
         email: "אימייל",
         phone: "טלפון",
@@ -94,7 +104,9 @@ export const translations = {
         letsTalk: "בוא נדבר",
         scheduleInspection: "קבע בדיקה",
         getQuote: "קבל הצעת מחיר",
-        getFreeInspection: "קבל בדיקה חינם בביתך"
+        getFreeInspection: "קבל הצעת מחיר",
+        scheduleAn: "קבע",
+        inspection: "בדיקה"
     },
     faq: {
         title: "שאלות נפוצות",

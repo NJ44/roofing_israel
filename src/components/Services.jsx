@@ -15,7 +15,7 @@ const Services = () => {
       description: t.services.repair.description,
       imageUrl: "/roof-repair.png",
       index: "01",
-      link: "/contact"
+      link: "/services/roof-repair"
     },
     {
       titlePrefix: t.services.replacement.titlePrefix,
@@ -23,7 +23,7 @@ const Services = () => {
       description: t.services.replacement.description,
       imageUrl: "/roof-replacement.png",
       index: "02",
-      link: "/contact"
+      link: "/services/roof-replacement"
     },
     {
       titlePrefix: t.services.restoration.titlePrefix,
@@ -31,7 +31,7 @@ const Services = () => {
       description: t.services.restoration.description,
       imageUrl: "/storm-damage.png",
       index: "03",
-      link: "/contact"
+      link: "/services/storm-restoration"
     }
   ];
 

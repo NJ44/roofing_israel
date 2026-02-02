@@ -15,8 +15,6 @@ const useFooterLinks = () => {
       links: [
         { title: t.nav.items.roofRepair, href: '/contact' },
         { title: t.nav.items.roofReplacement, href: '/contact' },
-        { title: t.nav.items.commercialRoofing, href: '/contact' },
-        { title: t.nav.items.gutterInstallation, href: '/contact' },
       ],
     },
     {

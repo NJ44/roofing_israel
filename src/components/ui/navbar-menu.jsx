@@ -101,8 +101,8 @@ export const ProductItem = ({
   onClick,
 }) => {
   const handleClick = (e) => {
+    e.preventDefault();
     if (onClick) {
-      e.preventDefault();
       onClick();
     }
   };
@@ -111,7 +111,7 @@ export const ProductItem = ({
     <a
       href={href}
       onClick={handleClick}
-      className="flex space-x-2 p-3 rounded-lg transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-900 group"
+      className="flex space-x-2 p-3 rounded-lg transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-900 group cursor-pointer"
       style={{ transform: 'none' }}
     >
       <img

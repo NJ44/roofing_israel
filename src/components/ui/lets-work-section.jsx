@@ -96,7 +96,7 @@ export function LetsWorkTogether() {
                 }}
               />
               <span
-                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base"
+                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base whitespace-nowrap"
                 style={{
                   color: isButtonHovered ? "#ffffff" : "var(--foreground)",
                 }}
@@ -133,7 +133,7 @@ export function LetsWorkTogether() {
               }}
             >
               <span
-                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base"
+                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base whitespace-nowrap"
                 style={{
                   color: "#ffffff",
                 }}
@@ -164,7 +164,7 @@ export function LetsWorkTogether() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-orange-500" />
           </span>
-          <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
+          <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground whitespace-nowrap">
             {t.letsWork.getFreeInspection}
           </span>
         </div>
@@ -180,7 +180,7 @@ export function LetsWorkTogether() {
         >
           <div className="flex flex-col items-center gap-6">
             <h2
-              className="relative text-center text-5xl font-light tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              className="relative text-center text-5xl font-light tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex gap-4"
               style={{
                 opacity: isClicked ? 0 : 1,
                 transform: isClicked ? "translateY(-40px) scale(0.95)" : "translateY(0) scale(1)",

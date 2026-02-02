@@ -107,7 +107,7 @@ export function FeaturedSpotlight({
                             transitionDelay: isHovered ? "100ms" : "0ms",
                         }}
                     >
-                        Learn more
+                        קרא עוד
                     </span>
                 </div>
             </div>
