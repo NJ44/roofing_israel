@@ -46,11 +46,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
         >
-          <div className="flex justify-center">
-            <div className="border py-1 px-4 rounded-lg text-sm">
-              {t.reviews.subtitle || "ביקורות לקוחות"}
-            </div>
-          </div>
+
           <h2 className="text-4xl font-bold tracking-tighter mt-5 text-center">
             {t.reviews.title}
           </h2>

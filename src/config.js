@@ -1,6 +1,6 @@
 // CLIENT VARIABLES - Replace these with actual values
 export const config = {
-  BUSINESS_NAME: "אפקס פתרונות קירוי",
+  BUSINESS_NAME: "יניב שיפוצים",
   TAGLINE: "שירותי קירוי אמינים לבית ולעסק",
   PRIMARY_COLOR: "#ea580c", // Orange-600
   ACCENT_COLOR: "#0f172a", // Slate-900
@@ -14,11 +14,7 @@ export const config = {
   FORM_WEBHOOK_URL: "",
   GOOGLE_BUSINESS_PROFILE_URL: "", // optional
   SHOW_RAIN_EFFECT: true, // Set to true to enable rain and lightning on homepage
-  LOCATIONS: [
-    { name: "משרד ראשי", slug: "main-office", address: "דרך בגין 123", city: "תל אביב", phone: "050-1234567", image: "/location-main.png" },
-    { name: "צפון", slug: "north", address: "שדרות הנשיא 45", city: "חיפה", phone: "050-1234568", image: "/location-north.png" },
-    { name: "דרום", slug: "south", address: "רחוב הרצל 78", city: "באר שבע", phone: "050-1234569", image: "/location-central.png" }
-  ]
+  LOCATIONS: []
 };
 
 // Sample reviews data (used if GOOGLE_REVIEWS_DATA is not provided)

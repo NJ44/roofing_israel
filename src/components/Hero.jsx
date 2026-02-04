@@ -3,9 +3,11 @@ import { RainBackground } from './ui/rain'
 import { useTranslation } from '../hooks/useTranslation'
 import { scrollToElement } from '../hooks/useLenis'
 import { config } from '../config'
+import { useDrawer } from '../contexts/DrawerContext'
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { openDrawer } = useDrawer();
 
   return (
     <section
@@ -28,18 +30,18 @@ const Hero = () => {
           thunderEnabled={false}
           contentClassName="h-full w-full"
         >
-          <HeroContent t={t} />
+          <HeroContent t={t} openDrawer={openDrawer} />
         </RainBackground>
       ) : (
         <div className="relative h-full w-full flex-1 flex flex-col">
-          <HeroContent t={t} />
+          <HeroContent t={t} openDrawer={openDrawer} />
         </div>
       )}
     </section>
   )
 }
 
-const HeroContent = ({ t }) => (
+const HeroContent = ({ t, openDrawer }) => (
   <>
     {/* Overlay - darker for white text visibility */}
     <div className="absolute inset-0 bg-slate-900/70 md:bg-transparent md:bg-gradient-to-r md:from-slate-900/90 md:via-slate-900/70 md:to-transparent pointer-events-none z-0"></div>
@@ -57,16 +59,12 @@ const HeroContent = ({ t }) => (
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 pt-6 pointer-events-auto">
-            <a
-              href="#contact"
+            <button
+              onClick={openDrawer}
               className="bg-primary text-white px-6 py-3 rounded-full font-semibold text-base hover:bg-orange-600 transition-all text-center shadow-lg transform hover:-translate-y-1"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToElement('#contact', { offset: -100 });
-              }}
             >
               {t.hero.cta}
-            </a>
+            </button>
             <a
               href="#services"
               className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 py-3 rounded-full font-semibold text-base hover:bg-white/20 transition-all text-center shadow-md"
@@ -85,4 +83,3 @@ const HeroContent = ({ t }) => (
 )
 
 export default Hero
-

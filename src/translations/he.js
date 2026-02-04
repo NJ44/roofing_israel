@@ -1,6 +1,5 @@
 export const translations = {
     nav: {
-        locations: "אזורי שירות",
         services: "השירותים שלנו",
         aboutUs: "אודות",
         contact: "צור קשר",
@@ -161,7 +160,7 @@ export const translations = {
     },
     reviews: {
         title: "מה הלקוחות שלנו אומרים",
-        subtitle: "ביקורות אמיתיות מלקוחות אמיתיים",
+
         readMore: "קרא עוד ביקורות",
         writeReview: "כתוב ביקורת"
     },

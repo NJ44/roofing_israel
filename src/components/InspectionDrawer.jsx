@@ -60,7 +60,7 @@ const InspectionDrawer = ({ isOpen, onClose }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/50 z-[60] backdrop-blur-sm"
+                        className="fixed inset-0 bg-black/50 z-[110] backdrop-blur-sm"
                     />
 
                     {/* Drawer */}
@@ -69,7 +69,7 @@ const InspectionDrawer = ({ isOpen, onClose }) => {
                         animate={{ x: 0 }}      // Slide to position
                         exit={{ x: '100%' }}    // Slide back to right
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-y-0 right-0 z-[70] w-full max-w-md bg-white shadow-2xl overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                        className="fixed inset-y-0 right-0 z-[120] w-full max-w-md bg-white shadow-2xl overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                     >
                         {/* Drawer Image */}
                         <div className="h-48 w-full relative">

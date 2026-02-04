@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
-import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon, Heart } from 'lucide-react';
+import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from 'lucide-react';
 import { config } from '../../config';
 
 import { useTranslation } from '../../hooks/useTranslation';
@@ -83,7 +83,7 @@ export function FooterSection() {
       <div className="container mx-auto max-w-7xl px-6 w-full">
         <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
           <AnimatedContainer className="space-y-4">
-            <Heart className="size-8 text-white" />
+
             <p className="text-gray-400 mt-8 text-sm md:mt-0">
               © {new Date().getFullYear()} {config.BUSINESS_NAME}. {t.footer.rights}
             </p>

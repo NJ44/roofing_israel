@@ -3,13 +3,13 @@ import { useParams, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useTranslation } from '../hooks/useTranslation'
 import { config } from '../config'
-import InspectionDrawer from '../components/InspectionDrawer'
 import { CheckCircle, ArrowRight } from 'lucide-react'
+import { useDrawer } from '../contexts/DrawerContext'
 
 const Service = () => {
     const { slug } = useParams()
     const { t } = useTranslation()
-    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
+    const { openDrawer } = useDrawer()
 
     // Map URL slug to translation key
     const slugKeyMap = {
@@ -83,7 +83,7 @@ const Service = () => {
 
                         <div className="mt-8">
                             <button
-                                onClick={() => setIsDrawerOpen(true)}
+                                onClick={openDrawer}
                                 className="bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 group"
                             >
                                 {t.hero.cta}
@@ -112,8 +112,6 @@ const Service = () => {
                     </motion.div>
                 </div>
             </div>
-
-            <InspectionDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
         </div>
     )
 }

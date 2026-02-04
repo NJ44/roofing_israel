@@ -4,7 +4,7 @@ import { config } from '../config'
 
 // SEO metadata for each route
 const getPageMetadata = (pathname) => {
-  const baseTitle = config.BUSINESS_NAME
+  const baseTitle = 'יניב שיפוצים'
   const city = config.CITY
 
   const metadataMap = {
@@ -94,7 +94,7 @@ const SEO = () => {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'LegalService',
+            '@type': 'HomeAndConstructionBusiness',
             '@id': canonicalUrl,
             name: config.BUSINESS_NAME,
             description: description,
@@ -132,48 +132,34 @@ const SEO = () => {
             // Add services schema
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
-              name: 'Legal Services',
+              name: 'Construction and Roofing Services',
               itemListElement: [
                 {
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Service',
-                    name: 'Business Law',
+                    name: 'Roof Repair',
                   },
                 },
                 {
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Service',
-                    name: 'Personal Injury',
+                    name: 'Roof Replacement',
                   },
                 },
                 {
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Service',
-                    name: 'Criminal Defense',
+                    name: 'Storm Restoration',
                   },
                 },
                 {
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Service',
-                    name: 'Family Law',
-                  },
-                },
-                {
-                  '@type': 'Offer',
-                  itemOffered: {
-                    '@type': 'Service',
-                    name: 'Estate Planning',
-                  },
-                },
-                {
-                  '@type': 'Offer',
-                  itemOffered: {
-                    '@type': 'Service',
-                    name: 'Real Estate Law',
+                    name: 'Gutter Installation',
                   },
                 },
               ],

@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { ArrowUpRight, Calendar } from "lucide-react"
 
 import { useTranslation } from "../../hooks/useTranslation";
+import { useDrawer } from "../../contexts/DrawerContext";
 
 export function LetsWorkTogether() {
   const [isHovered, setIsHovered] = useState(false)
@@ -13,6 +14,7 @@ export function LetsWorkTogether() {
   const [isQuoteButtonHovered, setIsQuoteButtonHovered] = useState(false)
 
   const { t } = useTranslation();
+  const { openDrawer } = useDrawer();
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -28,8 +30,7 @@ export function LetsWorkTogether() {
   }
 
   const handleGetQuote = () => {
-    // Add your quote form/page link here
-    window.open("#contact", "_self")
+    openDrawer();
   }
 
   return (
@@ -260,4 +261,3 @@ export function LetsWorkTogether() {
     </section>
   )
 }
-

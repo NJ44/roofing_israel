@@ -3,11 +3,13 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Calendar, ArrowRight, ChevronRight, Share2, Printer } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
+import { useDrawer } from '../contexts/DrawerContext'
 
 const BlogPost = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const { t } = useTranslation()
+    const { openDrawer } = useDrawer()
 
     const blogPosts = {
         "1": {
@@ -192,7 +194,7 @@ const BlogPost = () => {
                                     המומחים שלנו כאן כדי לעזור לכם בכל שאלה או צורך. צרו איתנו קשר עוד היום לבדיקה ללא התחייבות.
                                 </p>
                                 <button
-                                    onClick={() => navigate('/contact')}
+                                    onClick={openDrawer}
                                     className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-700 transition-all shadow-lg hover:shadow-orange-200"
                                 >
                                     קבל הצעת מחיר חינם

@@ -6,14 +6,14 @@ import { config } from "../config";
 import { useTranslation } from "../hooks/useTranslation";
 import { scrollToElement } from "../hooks/useLenis";
 import { Menu as MenuIcon, X, Phone, Mail, ChevronDown } from "lucide-react";
-import InspectionDrawer from "./InspectionDrawer";
+import { useDrawer } from "../contexts/DrawerContext";
 
 const NavBar = () => {
   const { t } = useTranslation();
   const [active, setActive] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { openDrawer } = useDrawer();
   const location = useLocation();
 
   useEffect(() => {
@@ -77,25 +77,6 @@ const NavBar = () => {
 
         {/* Desktop Menu items - centered */}
         <div className="hidden md:flex items-center gap-x-5 flex-1 justify-center mx-auto">
-          <MenuItem setActive={setActive} active={active} item={t.nav.locations}>
-            <div className="text-sm grid grid-cols-2 gap-6 p-4">
-              {config.LOCATIONS && config.LOCATIONS.length > 0 ? (
-                config.LOCATIONS.map((location, index) => (
-                  <ProductItem
-                    key={index}
-                    title={location.name}
-                    href={`/locations/${location.slug}`}
-                    src={location.image}
-                    description={`${location.address}, ${location.city}`}
-                    onClick={closeMenus}
-                  />
-                ))
-              ) : (
-                <div className="text-sm text-gray-600">No locations available</div>
-              )}
-            </div>
-          </MenuItem>
-
           <MenuItem setActive={setActive} active={active} item={t.nav.services}>
             <div className="flex flex-col space-y-4 text-sm p-4">
               <ProductItem
@@ -123,14 +104,8 @@ const NavBar = () => {
           </MenuItem>
 
           <Link
-            to="/"
-            onClick={(e) => {
-              if (window.location.pathname === "/") {
-                e.preventDefault();
-                scrollToSection("#home");
-              }
-              closeMenus();
-            }}
+            to="/about"
+            onClick={closeMenus}
             className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200 whitespace-nowrap"
           >
             {t.nav.aboutUs}
@@ -162,9 +137,9 @@ const NavBar = () => {
         </div>
 
         {/* Desktop Book Now Button */}
-        <div className="hidden md:flex items-center ml-auto gap-3">
+        <div className="hidden md:flex items-center ml-2 lg:ml-8 gap-3">
           <button
-            onClick={() => setIsDrawerOpen(true)}
+            onClick={openDrawer}
             className="bg-primary text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap text-sm"
           >
             {t.nav.bookNow}
@@ -194,27 +169,6 @@ const NavBar = () => {
           )}
         >
           <div className="flex flex-col space-y-6">
-            <div className="space-y-4">
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-2">
-                {t.nav.locations}
-              </p>
-              <div className="grid grid-cols-1 gap-2">
-                {config.LOCATIONS.map((location, index) => (
-                  <Link
-                    key={index}
-                    to={`/locations/${location.slug}`}
-                    onClick={closeMenus}
-                    className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-gray-100 mr-3 flex-shrink-0" />
-                    <span className="text-sm font-semibold text-gray-800">
-                      {location.name}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
             <div className="space-y-4">
               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-2">
                 {t.nav.services}
@@ -284,7 +238,7 @@ const NavBar = () => {
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  setIsDrawerOpen(true);
+                  openDrawer();
                 }}
                 className="block w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-opacity-90 transition-colors"
               >
@@ -305,11 +259,6 @@ const NavBar = () => {
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
-
-      <InspectionDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-      />
     </>
   );
 };
