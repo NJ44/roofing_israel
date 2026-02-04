@@ -227,7 +227,7 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">{t.footer.items.location}</h3>
+                    <h3 className="font-semibold text-gray-800 mb-1">{t.nav.items.location}</h3>
                     <p className="text-gray-600">
                       {config.ADDRESS_LINE && !config.ADDRESS_LINE.startsWith('{{') ? config.ADDRESS_LINE : '123 Main Street'}<br />
                       {config.CITY}

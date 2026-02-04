@@ -31,9 +31,8 @@ body {
   color: #333;
 }
 
-/* Smooth scroll support */
+/* Smooth scroll support - handled by Lenis */
 body.smooth-scroll {
-  scroll-behavior: smooth;
 }
 
 /* Reduced motion support */
@@ -48,9 +47,8 @@ body.smooth-scroll {
   }
 }
 
-/* Smooth scroll */
+/* Smooth scroll - handled by Lenis */
 html {
-  scroll-behavior: smooth;
 }
 
 /* Focus styles for accessibility */

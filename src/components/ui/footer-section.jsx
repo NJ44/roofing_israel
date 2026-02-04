@@ -30,6 +30,7 @@ const useFooterLinks = () => {
       label: t.footer.resourcesSection,
       links: [
         { title: t.nav.items.clientReviews, href: '#reviews' },
+        { title: 'השאר ביקורת', href: '/leave-review' },
         { title: t.nav.items.location, href: '#contact' },
         { title: t.footer.contactUs, href: '#contact' },
         { title: t.footer.scheduleConsultation, href: '#contact' },

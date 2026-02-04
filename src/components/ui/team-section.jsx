@@ -49,10 +49,6 @@ export default function TeamSection() {
                                     </div>
                                     <div className="mt-1 flex items-center justify-between">
                                         <span className="text-muted-foreground inline-block translate-y-6 text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">{member.role}</span>
-                                        <Link to={member.link} className="group-hover:text-primary dark:group-hover:text-primary inline-block translate-y-8 text-sm tracking-wide opacity-0 transition-all duration-500 hover:underline group-hover:translate-y-0 group-hover:opacity-100">
-                                            {' '}
-                                            {t.team.contact}
-                                        </Link>
                                     </div>
                                 </div>
                             </div>

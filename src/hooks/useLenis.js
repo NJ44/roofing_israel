@@ -20,15 +20,17 @@ export function useLenis() {
     lenisInstance = lenis
 
     // Animation loop using requestAnimationFrame
+    let rafId
     function raf(time) {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      rafId = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    rafId = requestAnimationFrame(raf)
 
     // Cleanup on unmount
     return () => {
+      cancelAnimationFrame(rafId)
       lenis.destroy()
       lenisInstance = null
     }
@@ -38,10 +40,10 @@ export function useLenis() {
 // Helper function to scroll to element using Lenis
 export function scrollToElement(selector, options = {}) {
   if (lenisInstance) {
-    const element = typeof selector === 'string' 
-      ? document.querySelector(selector) 
+    const element = typeof selector === 'string'
+      ? document.querySelector(selector)
       : selector
-    
+
     if (element) {
       lenisInstance.scrollTo(element, {
         duration: options.duration || 1.5,
@@ -51,12 +53,12 @@ export function scrollToElement(selector, options = {}) {
     }
   } else {
     // Fallback to native scrollIntoView if Lenis not initialized
-    const element = typeof selector === 'string' 
-      ? document.querySelector(selector) 
+    const element = typeof selector === 'string'
+      ? document.querySelector(selector)
       : selector
-    
+
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: 'smooth',
         block: options.block || 'start'
       })

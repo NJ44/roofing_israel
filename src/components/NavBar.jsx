@@ -1,63 +1,67 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Menu as MenuIcon, X } from "lucide-react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
-import { scrollToElement } from "../hooks/useLenis";
-import { cn } from "../lib/utils";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import { cn } from "@/lib/utils";
 import { config } from "../config";
+import { useTranslation } from "../hooks/useTranslation";
+import { scrollToElement } from "../hooks/useLenis";
+import { Menu as MenuIcon, X, Phone, Mail, ChevronDown } from "lucide-react";
 import InspectionDrawer from "./InspectionDrawer";
 
-import { useTranslation } from "../hooks/useTranslation";
-
-function NavBar({ className }) {
+const NavBar = () => {
+  const { t } = useTranslation();
   const [active, setActive] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const navigate = useNavigate();
-  const { t } = useTranslation();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
-  const scrollToSection = (href) => {
-    if (href.startsWith('#')) {
-      scrollToElement(href, { offset: -100 });
-      setActive(null);
-    }
-  };
-
-  const handleLinkClick = (path) => {
-    console.log('Navigating to:', path); // Debug log
-    navigate(path);
+  // Close menus when location changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
     setActive(null);
+  }, [location]);
+
+  const closeMenus = () => {
     setIsMobileMenuOpen(false);
-    // Scroll to top when navigating to a new page
-    window.scrollTo(0, 0);
+    setActive(null);
   };
 
-  const handleMobileLinkClick = (action) => {
-    action();
-    setIsMobileMenuOpen(false);
+  const scrollToSection = (id) => {
+    scrollToElement(id, { offset: -80 });
+    closeMenus();
   };
 
   return (
-    <div
-      className={cn(
-        "fixed inset-x-0 z-50 px-4 transition-all duration-500 ease-in-out",
-        isScrolled ? "top-[15px]" : "top-[52px]",
-        className
-      )}
-    >
-      <Menu setActive={setActive} className="w-full justify-between">
-        {/* Logo - positioned on the left */}
-        <Link to="/" className="flex items-center flex-shrink-0" onClick={() => setIsMobileMenuOpen(false)}>
+    <>
+      <Menu
+        setActive={setActive}
+        className={cn(
+          "fixed top-4 inset-x-4 md:inset-x-0 z-[100] transition-all duration-300 mx-auto",
+          isScrolled
+            ? "scale-95 md:scale-100 bg-white/90 backdrop-blur-md border-gray-200/50 shadow-2xl"
+            : "bg-white border-transparent shadow-lg"
+        )}
+      >
+        <Link
+          to="/"
+          className="flex items-center flex-shrink-0"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              scrollToSection("#home");
+            }
+            closeMenus();
+          }}
+        >
           {config.LOGO_URL && !config.LOGO_URL.startsWith("{{") ? (
             <img
               src={config.LOGO_URL}
@@ -72,7 +76,7 @@ function NavBar({ className }) {
         </Link>
 
         {/* Desktop Menu items - centered */}
-        <div className="hidden md:flex items-center space-x-6 flex-1 justify-center mx-auto">
+        <div className="hidden md:flex items-center gap-x-5 flex-1 justify-center mx-auto">
           <MenuItem setActive={setActive} active={active} item={t.nav.locations}>
             <div className="text-sm grid grid-cols-2 gap-6 p-4">
               {config.LOCATIONS && config.LOCATIONS.length > 0 ? (
@@ -83,7 +87,7 @@ function NavBar({ className }) {
                     href={`/locations/${location.slug}`}
                     src={location.image}
                     description={`${location.address}, ${location.city}`}
-                    onClick={() => handleLinkClick(`/locations/${location.slug}`)}
+                    onClick={closeMenus}
                   />
                 ))
               ) : (
@@ -93,76 +97,68 @@ function NavBar({ className }) {
           </MenuItem>
 
           <MenuItem setActive={setActive} active={active} item={t.nav.services}>
-            <div className="text-sm grid grid-cols-2 gap-6 p-4">
+            <div className="flex flex-col space-y-4 text-sm p-4">
               <ProductItem
-                title={t.nav.items.roofRepair}
+                title={`${t.services.repair.titlePrefix} ${t.services.repair.titleSuffix}`}
                 href="/services/roof-repair"
-                src="/roof-repair.png"
-                description={t.nav.items.repairDesc}
-                onClick={() => handleLinkClick("/services/roof-repair")}
+                src="/service-repair.png"
+                description={t.services.repair.description}
+                onClick={closeMenus}
               />
               <ProductItem
-                title={t.nav.items.roofReplacement}
+                title={`${t.services.replacement.titlePrefix} ${t.services.replacement.titleSuffix}`}
                 href="/services/roof-replacement"
-                src="/roof-replacement.png"
-                description={t.nav.items.replaceDesc}
-                onClick={() => handleLinkClick("/services/roof-replacement")}
+                src="/service-replacement.png"
+                description={t.services.replacement.description}
+                onClick={closeMenus}
               />
-
               <ProductItem
-                title={t.nav.items.stormRestoration}
+                title={`${t.services.restoration.titlePrefix} ${t.services.restoration.titleSuffix}`}
                 href="/services/storm-restoration"
-                src="/storm-damage.png"
-                description={t.nav.items.stormDesc}
-                onClick={() => handleLinkClick("/services/storm-restoration")}
+                src="/service-storm.png"
+                description={t.services.restoration.description}
+                onClick={closeMenus}
               />
-
             </div>
           </MenuItem>
 
-          <a
-            href="#home"
+          <Link
+            to="/"
             onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("#home");
+              if (window.location.pathname === "/") {
+                e.preventDefault();
+                scrollToSection("#home");
+              }
+              closeMenus();
             }}
-            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200 whitespace-nowrap"
           >
             {t.nav.aboutUs}
-          </a>
+          </Link>
 
-          <a
-            href="/blog"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick("/blog");
-            }}
-            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+          <Link
+            to="/blog"
+            onClick={closeMenus}
+            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200 whitespace-nowrap"
           >
             {t.nav.blog}
-          </a>
+          </Link>
 
-          <a
-            href="/reviews"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick("/reviews");
-            }}
-            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+          <Link
+            to="/reviews"
+            onClick={closeMenus}
+            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200 whitespace-nowrap"
           >
-            {t.reviews.title}
-          </a>
+            {t.nav.items.clientReviews}
+          </Link>
 
-          <a
-            href="/contact"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick("/contact");
-            }}
-            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+          <Link
+            to="/contact"
+            onClick={closeMenus}
+            className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200 whitespace-nowrap"
           >
             {t.nav.contact}
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Book Now Button */}
@@ -189,134 +185,97 @@ function NavBar({ className }) {
         </button>
       </Menu>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Content */}
       {isMobileMenuOpen && (
-        <div className={cn(
-          "md:hidden fixed inset-0 bg-white z-40 overflow-y-auto transition-all duration-500 ease-in-out",
-          isScrolled ? "top-[63px]" : "top-[100px]"
-        )}>
-          <div className="px-4 py-6 space-y-4">
-            {/* Services Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-black mb-3">{t.nav.services}</h3>
-              <div className="space-y-2">
-                <a
-                  href="/services/roof-repair"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/services/roof-repair"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
-                >
-                  {t.nav.items.roofRepair}
-                </a>
-                <a
-                  href="/services/roof-replacement"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/services/roof-replacement"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
-                >
-                  {t.nav.items.roofReplacement}
-                </a>
-                <a
-                  href="/services/storm-restoration"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/services/storm-restoration"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
-                >
-                  {t.nav.items.stormRestoration}
-                </a>
-
-              </div>
-            </div>
-
-            {/* About Section */}
-            <div>
-              <a
-                href="#home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleMobileLinkClick(() => scrollToSection("#home"));
-                }}
-                className="block py-2 text-lg font-semibold text-black hover:text-primary transition-colors"
-              >
-                {t.nav.aboutUs}
-              </a>
-            </div>
-
-            {/* Locations Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-black mb-3">{t.nav.locations}</h3>
-              <div className="space-y-2">
-                {config.LOCATIONS && config.LOCATIONS.length > 0 ? (
-                  config.LOCATIONS.map((location, index) => (
-                    <a
-                      key={index}
-                      href={`/locations/${location.slug}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleMobileLinkClick(() => handleLinkClick(`/locations/${location.slug}`));
-                      }}
-                      className="block py-2 text-black hover:text-primary transition-colors"
-                    >
+        <div
+          className={cn(
+            "md:hidden fixed inset-x-0 z-40 bg-white border-b border-gray-100 shadow-xl overflow-y-auto max-h-[80vh] transition-all duration-500 ease-in-out py-6 px-4 animate-in slide-in-from-top-4",
+            isScrolled ? "top-[63px]" : "top-[100px]"
+          )}
+        >
+          <div className="flex flex-col space-y-6">
+            <div className="space-y-4">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-2">
+                {t.nav.locations}
+              </p>
+              <div className="grid grid-cols-1 gap-2">
+                {config.LOCATIONS.map((location, index) => (
+                  <Link
+                    key={index}
+                    to={`/locations/${location.slug}`}
+                    onClick={closeMenus}
+                    className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-gray-100 mr-3 flex-shrink-0" />
+                    <span className="text-sm font-semibold text-gray-800">
                       {location.name}
-                    </a>
-                  ))
-                ) : (
-                  <div className="text-sm text-gray-600">No locations available</div>
-                )}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
 
-            {/* Reviews Section */}
-            <div>
-              <a
-                href="/reviews"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleMobileLinkClick(() => handleLinkClick("/reviews"));
-                }}
-                className="block py-2 text-lg font-semibold text-black hover:text-primary transition-colors"
-              >
-                {t.reviews.title}
-              </a>
+            <div className="space-y-4">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-2">
+                {t.nav.services}
+              </p>
+              <div className="grid grid-cols-1 gap-2">
+                <Link
+                  to="/services/roof-repair"
+                  onClick={closeMenus}
+                  className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 mr-3 flex-shrink-0" />
+                  <span className="text-sm font-semibold text-gray-800">
+                    {`${t.services.repair.titlePrefix} ${t.services.repair.titleSuffix}`}
+                  </span>
+                </Link>
+                <Link
+                  to="/services/roof-replacement"
+                  onClick={closeMenus}
+                  className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 mr-3 flex-shrink-0" />
+                  <span className="text-sm font-semibold text-gray-800">
+                    {`${t.services.replacement.titlePrefix} ${t.services.replacement.titleSuffix}`}
+                  </span>
+                </Link>
+                <Link
+                  to="/services/storm-restoration"
+                  onClick={closeMenus}
+                  className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 mr-3 flex-shrink-0" />
+                  <span className="text-sm font-semibold text-gray-800">
+                    {`${t.services.restoration.titlePrefix} ${t.services.restoration.titleSuffix}`}
+                  </span>
+                </Link>
+              </div>
             </div>
 
-            {/* Articles Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-black mb-3">{t.nav.blog}</h3>
-              <div className="space-y-2">
-                <a
-                  href="/blog"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/blog"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
+            <div className="space-y-2 pt-2">
+              <div className="grid grid-cols-1 gap-1">
+                <Link
+                  to="/blog"
+                  onClick={closeMenus}
+                  className="p-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 rounded-lg"
                 >
                   {t.nav.blog}
-                </a>
-              </div>
-            </div>
-
-            {/* Contact Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-black mb-3">{t.nav.contact}</h3>
-              <div className="space-y-2">
-                <a
-                  href="/contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleMobileLinkClick(() => handleLinkClick("/contact"));
-                  }}
-                  className="block py-2 text-black hover:text-primary transition-colors"
+                </Link>
+                <Link
+                  to="/reviews"
+                  onClick={closeMenus}
+                  className="p-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 rounded-lg"
                 >
-                  Contact Us
-                </a>
+                  {t.nav.items.clientReviews}
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={closeMenus}
+                  className="p-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 rounded-lg"
+                >
+                  {t.nav.contact}
+                </Link>
               </div>
             </div>
 
@@ -347,9 +306,12 @@ function NavBar({ className }) {
         />
       )}
 
-      <InspectionDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-    </div>
+      <InspectionDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      />
+    </>
   );
-}
+};
 
 export default NavBar;

@@ -9,84 +9,32 @@ const getPageMetadata = (pathname) => {
 
   const metadataMap = {
     '/': {
-      title: `${baseTitle}`,
-      description: `Experienced legal representation in ${city}. Business law, personal injury, criminal defense, and more. Free consultations available.`
+      title: `${baseTitle} | שירותי קירוי ואיטום גגות`,
+      description: `שירותי קירוי ואיטום גגות מקצועיים ב${city}. תיקון גגות רעפים, החלפת גגות, ושיקום נזקי סערה. הצעת מחיר חינם.`
     },
-    '/business-law': {
-      title: `Business Law Services in ${city} | ${baseTitle}`,
-      description: `Expert business law services in ${city}. Entity formation, contracts, employment law, and intellectual property. Strategic legal counsel for your business.`
+    '/services/roof-repair': {
+      title: `תיקון גגות ב${city} | ${baseTitle}`,
+      description: `תיקון נזילות, רעפים חסרים ובלאי גגות ב${city}. מענה מהיר ומקצועי לכל בעיה בגג.`
     },
-    '/personal-injury': {
-      title: `Personal Injury Attorneys in ${city} | ${baseTitle}`,
-      description: `Experienced personal injury lawyers in ${city}. Motor vehicle accidents, slip and fall, workplace injuries. Free consultation. Maximum compensation for your injuries.`
+    '/services/roof-replacement': {
+      title: `החלפת גגות ב${city} | ${baseTitle}`,
+      description: `שירותי החלפת גגות מלאים ב${city}. שימוש בחומרים האיכותיים ביותר עם אחריות מקיפה.`
     },
-    '/criminal-defense': {
-      title: `Criminal Defense Attorneys in ${city} | DUI, Drug Crimes & More | ${baseTitle}`,
-      description: `Aggressive criminal defense representation in ${city}. DUI/DWI, drug crimes, assault, white-collar crimes. Free consultation. Protecting your rights and freedom.`
-    },
-    '/business-law/entity-formation': {
-      title: `Entity Formation Services in ${city} | ${baseTitle}`,
-      description: `Business entity formation in ${city}. Corporations, LLCs, partnerships. Expert guidance on choosing the right business structure. Free consultation.`
-    },
-    '/business-law/contract-services': {
-      title: `Contract Services in ${city} | ${baseTitle}`,
-      description: `Expert contract drafting and review in ${city}. Employment agreements, vendor contracts, service agreements. Protect your business interests.`
-    },
-    '/business-law/employment-law': {
-      title: `Employment Law Services in ${city} | ${baseTitle}`,
-      description: `Employment law counsel in ${city}. Employment contracts, workplace policies, compliance, and dispute resolution. Protect your business.`
-    },
-    '/business-law/intellectual-property': {
-      title: `Intellectual Property Services in ${city} | ${baseTitle}`,
-      description: `Intellectual property protection in ${city}. Trademarks, copyrights, trade secrets, and licensing. Protect your valuable business assets.`
-    },
-    '/personal-injury/motor-vehicle-accidents': {
-      title: `Motor Vehicle Accident Attorneys in ${city} | ${baseTitle}`,
-      description: `Experienced car accident lawyers in ${city}. Maximum compensation for motor vehicle accidents. Free consultation. No fee unless we win.`
-    },
-    '/personal-injury/slip-and-fall': {
-      title: `Slip and Fall Accident Lawyers in ${city} | ${baseTitle}`,
-      description: `Premises liability attorneys in ${city}. Slip and fall accidents, property owner negligence. Free consultation. Recover compensation for your injuries.`
-    },
-    '/personal-injury/workplace-injuries': {
-      title: `Workplace Injury Attorneys in ${city} | ${baseTitle}`,
-      description: `Workplace injury lawyers in ${city}. Construction accidents, industrial injuries, workers' compensation. Free consultation.`
-    },
-    '/personal-injury/wrongful-death': {
-      title: `Wrongful Death Attorneys in ${city} | ${baseTitle}`,
-      description: `Compassionate wrongful death representation in ${city}. Hold negligent parties accountable. Free consultation. Financial support for your family.`
-    },
-    '/criminal-defense/dui-defense': {
-      title: `DUI/DWI Defense Attorneys in ${city} | ${baseTitle}`,
-      description: `Experienced DUI/DWI defense lawyers in ${city}. Protect your license and minimize consequences. Free consultation. Aggressive defense representation.`
-    },
-    '/criminal-defense/drug-crimes': {
-      title: `Drug Crime Defense Attorneys in ${city} | ${baseTitle}`,
-      description: `Criminal defense for drug charges in ${city}. Possession, distribution, trafficking. Free consultation. Protect your rights and freedom.`
-    },
-    '/criminal-defense/violent-crimes': {
-      title: `Assault & Violent Crime Defense in ${city} | ${baseTitle}`,
-      description: `Aggressive defense for assault and violent crime charges in ${city}. Self-defense, false accusations. Free consultation. Protect your future.`
-    },
-    '/criminal-defense/white-collar-crimes': {
-      title: `White-Collar Crime Defense in ${city} | ${baseTitle}`,
-      description: `Expert white-collar crime defense in ${city}. Fraud, embezzlement, money laundering. Free consultation. Protect your reputation and freedom.`
-    },
-    '/our-practice': {
-      title: `About Our Firm | ${baseTitle} — ${city} Law Firm`,
-      description: `Learn about ${baseTitle} in ${city}. Our experienced attorneys, proven track record, and commitment to providing exceptional legal representation.`
+    '/services/storm-restoration': {
+      title: `שיקום נזקי סערה ב${city} | ${baseTitle}`,
+      description: `הערכת נזקים ושיקום גגות לאחר מזג אוויר סוער ב${city}. סיוע בתביעות ביטוח.`
     },
     '/reviews': {
-      title: `Client Reviews & Testimonials | ${baseTitle} — ${city}`,
-      description: `Read real client reviews and testimonials about ${baseTitle} in ${city}. See why our clients trust us with their legal needs.`
+      title: `ביקורות לקוחות | ${baseTitle} — ${city}`,
+      description: `קראו מה הלקוחות שלנו אומרים על שירותי הקירוי והאיטום של ${baseTitle} ב${city}.`
     },
     '/contact': {
-      title: `Contact Us | ${baseTitle} — ${city} Law Office`,
-      description: `Contact ${baseTitle} in ${city}. Schedule a free consultation, ask questions, or visit our office. We're here to help with all your legal needs.`
+      title: `צור קשר | ${baseTitle} — ${city}`,
+      description: `צרו קשר עם ${baseTitle} ב${city} להזמנת בדיקת גג או קבלת הצעת מחיר חינם.`
     },
     '/blog': {
-      title: `Legal Blog & Updates | ${baseTitle} — ${city}`,
-      description: `Legal insights, case updates, and helpful information from ${baseTitle} in ${city}. Stay informed about your rights and legal matters.`
+      title: `מאמרים וטיפים בנושא גגות | ${baseTitle} — ${city}`,
+      description: `טיפים לתחזוקת גגות, מידע על חומרים וחדשות מעולם הקירוי מאת המומחים של ${baseTitle}.`
     }
   }
 

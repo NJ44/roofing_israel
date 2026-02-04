@@ -13,6 +13,7 @@ export const config = {
   GOOGLE_REVIEWS_DATA: null, // Will be set from {{REVIEWS_JSON}} or use sample data
   FORM_WEBHOOK_URL: "",
   GOOGLE_BUSINESS_PROFILE_URL: "", // optional
+  SHOW_RAIN_EFFECT: true, // Set to true to enable rain and lightning on homepage
   LOCATIONS: [
     { name: "משרד ראשי", slug: "main-office", address: "דרך בגין 123", city: "תל אביב", phone: "050-1234567", image: "/location-main.png" },
     { name: "צפון", slug: "north", address: "שדרות הנשיא 45", city: "חיפה", phone: "050-1234568", image: "/location-north.png" },

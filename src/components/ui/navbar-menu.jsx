@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const transition = {
   type: "spring",
@@ -31,7 +32,7 @@ export const MenuItem = ({
     >
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200"
+        className="cursor-pointer text-black hover:text-primary font-medium text-sm transition-colors duration-200 whitespace-nowrap"
       >
         {item}
       </motion.p>
@@ -86,7 +87,7 @@ export const Menu = ({
         // Close dropdown when mouse leaves the entire nav area
         setActive(null);
       }}
-      className={`relative rounded-lg border border-transparent dark:bg-white dark:border-gray-300 bg-white shadow-2xl flex items-center space-x-3 px-6 py-3 max-w-4xl mx-auto ${className || ''}`}
+      className={`rounded-2xl border border-transparent dark:bg-white dark:border-gray-300 bg-white shadow-2xl flex items-center space-x-3 px-8 py-3 max-w-4xl mx-auto ${className || ''}`}
     >
       {children}
     </nav>
@@ -100,17 +101,10 @@ export const ProductItem = ({
   src,
   onClick,
 }) => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (onClick) {
-      onClick();
-    }
-  };
-
   return (
-    <a
-      href={href}
-      onClick={handleClick}
+    <Link
+      to={href}
+      onClick={onClick}
       className="flex space-x-2 p-3 rounded-lg transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-900 group cursor-pointer"
       style={{ transform: 'none' }}
     >
@@ -130,7 +124,7 @@ export const ProductItem = ({
           {description}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 

@@ -25,14 +25,6 @@ import { scrollToTop } from './hooks/useLenis'
 import { config } from './config'
 
 function HomePage() {
-  // Add smooth-scroll class to body for CSS support
-  useEffect(() => {
-    document.body.classList.add('smooth-scroll')
-    return () => {
-      document.body.classList.remove('smooth-scroll')
-    }
-  }, [])
-
   return (
     <>
       <Hero />
@@ -63,14 +55,7 @@ function App() {
 
   // Scroll to top on route change
   useEffect(() => {
-    // Small delay to ensure page has rendered
-    const timer = setTimeout(() => {
-      scrollToTop(true) // Instant scroll on route change
-      // Backup: Also use native scrollTo for immediate effect
-      window.scrollTo(0, 0)
-    }, 0)
-
-    return () => clearTimeout(timer)
+    scrollToTop(true)
   }, [location.pathname])
 
   return (
@@ -79,7 +64,7 @@ function App() {
       <TopBanner />
       <NavBar />
       <main>
-        <Routes>
+        <Routes key={location.pathname} location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/feature-demo" element={<FeatureDemo />} />
           <Route path="/blog" element={<Blog />} />
