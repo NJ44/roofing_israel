@@ -75,7 +75,7 @@ export function LetsWorkTogether() {
               onClick={handleBookCall}
               onMouseEnter={() => setIsButtonHovered(true)}
               onMouseLeave={() => setIsButtonHovered(false)}
-              className="group relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4 cursor-pointer"
+              className="group relative flex items-center justify-center gap-2 sm:gap-3 overflow-hidden rounded-full border px-4 py-3 transition-all duration-500 sm:px-8 sm:py-4 cursor-pointer w-full sm:w-auto"
               style={{
                 borderColor: isButtonHovered ? "var(--primary-color)" : "var(--border)",
                 backgroundColor: isButtonHovered ? "var(--primary-color)" : "transparent",
@@ -97,12 +97,13 @@ export function LetsWorkTogether() {
                 }}
               />
               <span
-                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base whitespace-nowrap"
+                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base whitespace-nowrap text-center"
                 style={{
                   color: isButtonHovered ? "#ffffff" : "var(--foreground)",
                 }}
               >
-                {t.letsWork.scheduleInspection}
+                <span className="hidden sm:inline">{t.letsWork.scheduleInspection}</span>
+                <span className="sm:hidden inline-block">קבל הצעת מחיר</span>
               </span>
               <ArrowUpRight
                 className="size-4 transition-all duration-500 sm:size-5"
@@ -119,7 +120,7 @@ export function LetsWorkTogether() {
               onClick={handleGetQuote}
               onMouseEnter={() => setIsQuoteButtonHovered(true)}
               onMouseLeave={() => setIsQuoteButtonHovered(false)}
-              className="group relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4 cursor-pointer"
+              className="group relative flex items-center justify-center gap-2 sm:gap-3 overflow-hidden rounded-full border px-4 py-3 transition-all duration-500 sm:px-8 sm:py-4 cursor-pointer w-full sm:w-auto"
               style={{
                 borderColor: isQuoteButtonHovered ? "#c2410c" : "var(--primary-color)",
                 backgroundColor: isQuoteButtonHovered ? "#c2410c" : "var(--primary-color)",
@@ -134,12 +135,13 @@ export function LetsWorkTogether() {
               }}
             >
               <span
-                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base whitespace-nowrap"
+                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base whitespace-nowrap text-center"
                 style={{
                   color: "#ffffff",
                 }}
               >
-                {t.letsWork.getQuote}
+                <span className="hidden sm:inline">{t.letsWork.getQuote}</span>
+                <span className="sm:hidden inline-block">דבר עם המומחים</span>
               </span>
               <ArrowUpRight
                 className="size-4 transition-all duration-500 sm:size-5"

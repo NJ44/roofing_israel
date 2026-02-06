@@ -54,7 +54,7 @@ const NavBar = () => {
         {/* Mobile Burger Menu Button - positioned on the left */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors order-first"
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors order-first mr-auto md:mr-0"
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
@@ -66,7 +66,7 @@ const NavBar = () => {
 
         <Link
           to="/"
-          className="flex items-center flex-shrink-0 ml-auto md:ml-0"
+          className="flex items-center flex-shrink-0 md:ml-0 order-last md:order-none"
           onClick={(e) => {
             if (window.location.pathname === "/") {
               e.preventDefault();
