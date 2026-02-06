@@ -26,13 +26,13 @@ const HeroContent = ({ t, openDrawer }) => (
           <div className="flex flex-col sm:flex-row gap-4 pt-6 pointer-events-auto justify-center md:justify-start scale-110 md:scale-100">
             <button
               onClick={openDrawer}
-              className="bg-primary text-white px-6 py-3 rounded-full font-semibold text-base hover:bg-orange-600 transition-all text-center shadow-lg transform hover:-translate-y-1"
+              className="bg-primary text-white px-6 py-3 rounded-full font-semibold text-base hover:bg-orange-600 transition-all text-center shadow-lg transform hover:-translate-y-1 w-auto max-w-[280px] mx-auto md:mx-0 md:max-w-none"
             >
               {t.hero.cta}
             </button>
             <a
               href={`tel:${config.PHONE}`}
-              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 py-3 rounded-full font-semibold text-base hover:bg-white/20 transition-all text-center shadow-md flex items-center justify-center gap-2"
+              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 py-3 rounded-full font-semibold text-base hover:bg-white/20 transition-all text-center shadow-md flex items-center justify-center gap-2 w-auto max-w-[280px] mx-auto md:mx-0 md:max-w-none"
             >
               <Phone className="w-5 h-5" />
               <span>{config.PHONE}</span>
