@@ -30,6 +30,29 @@ const NavBar = () => {
     setActive(null);
   }, [location]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      // Disable scroll
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Re-enable scroll
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isMobileMenuOpen]);
+
   const closeMenus = () => {
     setIsMobileMenuOpen(false);
     setActive(null);
@@ -51,22 +74,9 @@ const NavBar = () => {
             : "top-2 md:top-12 bg-white border-transparent shadow-lg"
         )}
       >
-        {/* Mobile Burger Menu Button - positioned on the left */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors order-first mr-auto md:mr-0"
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <MenuIcon className="w-6 h-6" />
-          )}
-        </button>
-
         <Link
           to="/"
-          className="flex items-center flex-shrink-0 md:ml-0 order-last md:order-none"
+          className="flex items-center flex-shrink-0 md:ml-0 order-first md:order-none"
           onClick={(e) => {
             if (window.location.pathname === "/") {
               e.preventDefault();
@@ -87,6 +97,19 @@ const NavBar = () => {
             </span>
           )}
         </Link>
+
+        {/* Mobile Burger Menu Button - positioned on the right */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors order-last ml-auto md:ml-0 md:order-none"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <MenuIcon className="w-6 h-6" />
+          )}
+        </button>
 
         {/* Desktop Menu items - centered */}
         <div className="hidden md:flex items-center gap-x-5 flex-1 justify-center mx-auto">

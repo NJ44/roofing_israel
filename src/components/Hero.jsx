@@ -11,19 +11,19 @@ const HeroContent = ({ t, openDrawer }) => (
     {/* Overlay - darker for white text visibility */}
     <div className="absolute inset-0 bg-slate-900/70 md:bg-transparent md:bg-gradient-to-r md:from-slate-900/90 md:via-slate-900/70 md:to-transparent pointer-events-none z-0"></div>
 
-    <div className="container mx-auto px-4 pb-24 md:pb-32 relative z-10 h-full flex items-end">
-      <div className="max-w-3xl">
+    <div className="container mx-auto px-4 pb-24 md:pb-32 relative z-10 h-full flex items-center md:items-end">
+      <div className="max-w-3xl w-full mx-auto text-center md:text-left">
         {/* Text Content */}
         <div className="text-white space-y-4 animate-fade-in">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-md">
+          <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-md scale-110 md:scale-100">
             {t.hero.title}
           </h1>
-          <h2 className="text-lg md:text-xl text-gray-200 font-normal max-w-2xl drop-shadow-sm">
+          <h2 className="text-xl md:text-xl text-gray-200 font-normal max-w-2xl mx-auto md:mx-0 drop-shadow-sm scale-110 md:scale-100">
             {t.hero.subtitle}
           </h2>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 pointer-events-auto">
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 pointer-events-auto justify-center md:justify-start scale-110 md:scale-100">
             <button
               onClick={openDrawer}
               className="bg-primary text-white px-6 py-3 rounded-full font-semibold text-base hover:bg-orange-600 transition-all text-center shadow-lg transform hover:-translate-y-1"
