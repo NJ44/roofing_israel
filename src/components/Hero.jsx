@@ -4,6 +4,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { scrollToElement } from '../hooks/useLenis'
 import { config } from '../config'
 import { useDrawer } from '../contexts/DrawerContext'
+import { Phone } from 'lucide-react'
 
 const HeroContent = ({ t, openDrawer }) => (
   <>
@@ -30,14 +31,11 @@ const HeroContent = ({ t, openDrawer }) => (
               {t.hero.cta}
             </button>
             <a
-              href="#services"
-              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 py-3 rounded-full font-semibold text-base hover:bg-white/20 transition-all text-center shadow-md"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToElement('#services', { offset: -100 });
-              }}
+              href={`tel:${config.PHONE}`}
+              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 py-3 rounded-full font-semibold text-base hover:bg-white/20 transition-all text-center shadow-md flex items-center justify-center gap-2"
             >
-              {t.hero.services}
+              <Phone className="w-5 h-5" />
+              <span>{config.PHONE}</span>
             </a>
           </div>
         </div>

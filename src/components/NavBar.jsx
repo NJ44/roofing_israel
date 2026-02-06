@@ -51,9 +51,22 @@ const NavBar = () => {
             : "top-2 md:top-12 bg-white border-transparent shadow-lg"
         )}
       >
+        {/* Mobile Burger Menu Button - positioned on the left */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <MenuIcon className="w-6 h-6" />
+          )}
+        </button>
+
         <Link
           to="/"
-          className="flex items-center flex-shrink-0"
+          className="flex items-center flex-shrink-0 ms-auto md:ms-0"
           onClick={(e) => {
             if (window.location.pathname === "/") {
               e.preventDefault();
@@ -146,18 +159,7 @@ const NavBar = () => {
           </button>
         </div>
 
-        {/* Mobile Burger Menu Button - positioned on the left */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors ms-auto"
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <MenuIcon className="w-6 h-6" />
-          )}
-        </button>
+
       </Menu>
 
       {/* Mobile Menu Content */}
