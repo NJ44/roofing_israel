@@ -11,7 +11,7 @@ function TopBanner() {
   const displayPhone = config.PHONE || '050-1234567';
 
   return (
-    <div className="bg-primary text-white py-2 px-4 text-sm">
+    <div className="hidden md:block bg-primary text-white py-2 px-4 text-sm">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-6">
         <a
           href={`mailto:${displayEmail}`}

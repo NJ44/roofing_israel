@@ -1,7 +1,6 @@
-"use client"
-
 import { useState } from "react"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, ArrowUpLeft } from "lucide-react"
+import { useLanguage } from "../../contexts/LanguageContext"
 
 export function FeaturedSpotlight({
     titlePrefix = "Modern",
@@ -13,6 +12,8 @@ export function FeaturedSpotlight({
     onLearnMore
 }) {
     const [isHovered, setIsHovered] = useState(false)
+    const { language } = useLanguage()
+    const isRtl = language === 'he'
 
     return (
         <div
@@ -22,7 +23,7 @@ export function FeaturedSpotlight({
             onClick={onLearnMore}
         >
             {/* Left: Text Block */}
-            <div className="relative z-10 flex w-full max-w-[320px] shrink-0 flex-col items-center text-center md:w-[240px] md:items-start md:text-left lg:w-[280px] lg:pt-4">
+            <div className="relative z-10 flex w-full max-w-[320px] shrink-0 flex-col items-center text-center md:w-[240px] md:items-start md:text-start lg:w-[280px] lg:pt-4">
                 {/* Label with animated line */}
                 <div className="mb-6 flex items-center gap-3 md:mb-8 md:gap-4">
                     <div
@@ -57,7 +58,7 @@ export function FeaturedSpotlight({
                     <span
                         className="block text-3xl font-normal tracking-tight text-foreground transition-all duration-700 sm:text-4xl md:text-4xl lg:text-5xl"
                         style={{
-                            transform: isHovered ? "translateX(12px)" : "translateX(0)",
+                            transform: isHovered ? `translateX(${isRtl ? '-12px' : '12px'})` : "translateX(0)",
                             transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                     >
@@ -90,19 +91,29 @@ export function FeaturedSpotlight({
                             transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                     >
-                        <ArrowUpRight
-                            className="h-3.5 w-3.5 transition-transform duration-500 md:h-4 md:w-4"
-                            style={{
-                                transform: isHovered ? "rotate(45deg)" : "rotate(0deg)",
-                                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-                            }}
-                        />
+                        {isRtl ? (
+                            <ArrowUpLeft
+                                className="h-3.5 w-3.5 transition-transform duration-500 md:h-4 md:w-4"
+                                style={{
+                                    transform: isHovered ? "rotate(-45deg)" : "rotate(0deg)",
+                                    transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                                }}
+                            />
+                        ) : (
+                            <ArrowUpRight
+                                className="h-3.5 w-3.5 transition-transform duration-500 md:h-4 md:w-4"
+                                style={{
+                                    transform: isHovered ? "rotate(45deg)" : "rotate(0deg)",
+                                    transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                                }}
+                            />
+                        )}
                     </div>
                     <span
                         className="text-[10px] font-medium uppercase tracking-widest transition-all duration-700 md:text-xs"
                         style={{
                             opacity: isHovered ? 1 : 0.5,
-                            transform: isHovered ? "translateX(0)" : "translateX(-8px)",
+                            transform: isHovered ? "translateX(0)" : `translateX(${isRtl ? '8px' : '-8px'})`,
                             transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                             transitionDelay: isHovered ? "100ms" : "0ms",
                         }}
@@ -116,7 +127,7 @@ export function FeaturedSpotlight({
             <div
                 className="relative transition-all duration-700"
                 style={{
-                    transform: isHovered ? "translateX(4px) translateY(-4px)" : "translateX(0) translateY(0)",
+                    transform: isHovered ? `translateX(${isRtl ? '-4px' : '4px'}) translateY(-4px)` : "translateX(0) translateY(0)",
                     transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
             >
@@ -159,7 +170,7 @@ export function FeaturedSpotlight({
 
                     {/* Corner accents */}
                     <div
-                        className="absolute left-2 top-2 h-5 w-px bg-white/80 transition-all duration-500 md:left-3 md:top-3 md:h-6"
+                        className="absolute start-2 top-2 h-5 w-px bg-white/80 transition-all duration-500 md:start-3 md:top-3 md:h-6"
                         style={{
                             opacity: isHovered ? 1 : 0,
                             transform: isHovered ? "scaleY(1)" : "scaleY(0)",
@@ -169,17 +180,17 @@ export function FeaturedSpotlight({
                         }}
                     />
                     <div
-                        className="absolute left-2 top-2 h-px w-5 bg-white/80 transition-all duration-500 md:left-3 md:top-3 md:w-6"
+                        className="absolute start-2 top-2 h-px w-5 bg-white/80 transition-all duration-500 md:start-3 md:top-3 md:w-6"
                         style={{
                             opacity: isHovered ? 1 : 0,
                             transform: isHovered ? "scaleX(1)" : "scaleX(0)",
-                            transformOrigin: "left",
+                            transformOrigin: isRtl ? "right" : "left",
                             transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                             transitionDelay: "100ms",
                         }}
                     />
                     <div
-                        className="absolute bottom-2 right-2 h-5 w-px bg-white/80 transition-all duration-500 md:bottom-3 md:right-3 md:h-6"
+                        className="absolute bottom-2 end-2 h-5 w-px bg-white/80 transition-all duration-500 md:bottom-3 md:end-3 md:h-6"
                         style={{
                             opacity: isHovered ? 1 : 0,
                             transform: isHovered ? "scaleY(1)" : "scaleY(0)",
@@ -189,11 +200,11 @@ export function FeaturedSpotlight({
                         }}
                     />
                     <div
-                        className="absolute bottom-2 right-2 h-px w-5 bg-white/80 transition-all duration-500 md:bottom-3 md:right-3 md:w-6"
+                        className="absolute bottom-2 end-2 h-px w-5 bg-white/80 transition-all duration-500 md:bottom-3 md:end-3 md:w-6"
                         style={{
                             opacity: isHovered ? 1 : 0,
                             transform: isHovered ? "scaleX(1)" : "scaleX(0)",
-                            transformOrigin: "right",
+                            transformOrigin: isRtl ? "left" : "right",
                             transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                             transitionDelay: "200ms",
                         }}
@@ -202,7 +213,7 @@ export function FeaturedSpotlight({
 
                 {/* Index number */}
                 <span
-                    className="absolute -bottom-6 right-0 font-mono text-xs text-muted-foreground transition-all duration-700 md:-bottom-8 md:text-sm"
+                    className="absolute -bottom-6 start-0 font-mono text-xs text-muted-foreground transition-all duration-700 md:-bottom-8 md:text-sm"
                     style={{
                         opacity: isHovered ? 1 : 0.4,
                         transform: isHovered ? "translateY(12px)" : "translateY(0)",

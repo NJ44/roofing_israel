@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { TestimonialsColumn } from "./ui/testimonials-columns-1";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { config } from "../config";
 import { useTranslation } from "../hooks/useTranslation";
@@ -46,7 +46,6 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
         >
-
           <h2 className="text-4xl font-bold tracking-tighter mt-5 text-center">
             {t.reviews.title}
           </h2>

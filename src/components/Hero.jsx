@@ -5,42 +5,6 @@ import { scrollToElement } from '../hooks/useLenis'
 import { config } from '../config'
 import { useDrawer } from '../contexts/DrawerContext'
 
-const Hero = () => {
-  const { t } = useTranslation();
-  const { openDrawer } = useDrawer();
-
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex flex-col pt-20"
-      style={{
-        backgroundImage: 'url(/hero-bg.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {config.SHOW_RAIN_EFFECT ? (
-        <RainBackground
-          intensity={500}
-          speed={0.5}
-          color="rgba(255, 255, 255, 0.4)"
-          className="absolute inset-0 w-full h-full z-0"
-          lightningEnabled={true}
-          lightningFrequency={15}
-          thunderEnabled={false}
-          contentClassName="h-full w-full"
-        >
-          <HeroContent t={t} openDrawer={openDrawer} />
-        </RainBackground>
-      ) : (
-        <div className="relative h-full w-full flex-1 flex flex-col">
-          <HeroContent t={t} openDrawer={openDrawer} />
-        </div>
-      )}
-    </section>
-  )
-}
-
 const HeroContent = ({ t, openDrawer }) => (
   <>
     {/* Overlay - darker for white text visibility */}
@@ -81,5 +45,41 @@ const HeroContent = ({ t, openDrawer }) => (
     </div>
   </>
 )
+
+const Hero = () => {
+  const { t } = useTranslation();
+  const { openDrawer } = useDrawer();
+
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col pt-24 md:pt-32"
+      style={{
+        backgroundImage: 'url(/hero-bg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {config.SHOW_RAIN_EFFECT ? (
+        <RainBackground
+          intensity={500}
+          speed={0.5}
+          color="rgba(255, 255, 255, 0.4)"
+          className="absolute inset-0 w-full h-full z-0"
+          lightningEnabled={true}
+          lightningFrequency={15}
+          thunderEnabled={false}
+          contentClassName="h-full w-full"
+        >
+          <HeroContent t={t} openDrawer={openDrawer} />
+        </RainBackground>
+      ) : (
+        <div className="relative h-full w-full flex-1 flex flex-col">
+          <HeroContent t={t} openDrawer={openDrawer} />
+        </div>
+      )}
+    </section>
+  )
+}
 
 export default Hero

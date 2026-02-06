@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from '../hooks/useTranslation'
 import { config } from '../config'
-import { CheckCircle, Award, Users, clock } from 'lucide-react'
+import { CheckCircle, Award, Users } from 'lucide-react'
 
 const About = () => {
     const { t } = useTranslation()

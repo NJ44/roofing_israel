@@ -3,7 +3,7 @@ import { useParams, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useTranslation } from '../hooks/useTranslation'
 import { config } from '../config'
-import { CheckCircle, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useDrawer } from '../contexts/DrawerContext'
 
 const Service = () => {
@@ -27,14 +27,7 @@ const Service = () => {
 
     const serviceData = t.services[serviceKey]
 
-    // Extended content (could be moved to translation file in future)
-    const features = [
-        "צוות מקצועי ומנוסה",
-        "שימוש בחומרים איכותיים בלבד",
-        "אחריות מקיפה על העבודה",
-        "עמידה בלוחות זמנים",
-        "שירות אדיב ושקוף"
-    ]
+
 
     return (
         <div className="pt-20 min-h-screen bg-white">
@@ -71,17 +64,12 @@ const Service = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl font-bold mb-6 text-gray-900">למה לבחור בנו?</h2>
-                        <div className="space-y-4">
-                            {features.map((feature, index) => (
-                                <div key={index} className="flex items-center gap-3">
-                                    <CheckCircle className="text-primary w-6 h-6 flex-shrink-0" />
-                                    <span className="text-lg text-gray-700">{feature}</span>
-                                </div>
-                            ))}
+                        <h2 className="text-3xl font-bold mb-8 text-gray-900">אודות השירות</h2>
+                        <div className="text-lg text-gray-700 leading-relaxed space-y-6">
+                            <p>{serviceData.longDescription}</p>
                         </div>
 
-                        <div className="mt-8">
+                        <div className="mt-12">
                             <button
                                 onClick={openDrawer}
                                 className="bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 group"

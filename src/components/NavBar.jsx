@@ -18,7 +18,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -45,10 +45,10 @@ const NavBar = () => {
       <Menu
         setActive={setActive}
         className={cn(
-          "fixed top-4 inset-x-4 md:inset-x-0 z-[100] transition-all duration-300 mx-auto",
+          "fixed inset-x-4 md:inset-x-0 z-[100] transition-all duration-500 mx-auto",
           isScrolled
-            ? "scale-95 md:scale-100 bg-white/90 backdrop-blur-md border-gray-200/50 shadow-2xl"
-            : "bg-white border-transparent shadow-lg"
+            ? "top-2 md:top-4 scale-95 md:scale-100 bg-white/90 backdrop-blur-md border-gray-200/50 shadow-2xl"
+            : "top-2 md:top-12 bg-white border-transparent shadow-lg"
         )}
       >
         <Link
@@ -146,10 +146,10 @@ const NavBar = () => {
           </button>
         </div>
 
-        {/* Mobile Burger Menu Button - positioned on the right */}
+        {/* Mobile Burger Menu Button - positioned on the left */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors ml-auto"
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors ms-auto"
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
@@ -165,9 +165,17 @@ const NavBar = () => {
         <div
           className={cn(
             "md:hidden fixed inset-x-0 z-40 bg-white border-b border-gray-100 shadow-xl overflow-y-auto max-h-[80vh] transition-all duration-500 ease-in-out py-6 px-4 animate-in slide-in-from-top-4",
-            isScrolled ? "top-[63px]" : "top-[100px]"
+            isScrolled ? "top-[58px]" : "top-[58px] md:top-[100px]"
           )}
         >
+          {/* Mobile Close Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute top-4 end-4 p-2 text-gray-500 hover:text-black transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
           <div className="flex flex-col space-y-6">
             <div className="space-y-4">
               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest px-2">
@@ -179,7 +187,7 @@ const NavBar = () => {
                   onClick={closeMenus}
                   className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 mr-3 flex-shrink-0" />
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 me-3 flex-shrink-0" />
                   <span className="text-sm font-semibold text-gray-800">
                     {`${t.services.repair.titlePrefix} ${t.services.repair.titleSuffix}`}
                   </span>
@@ -189,7 +197,7 @@ const NavBar = () => {
                   onClick={closeMenus}
                   className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 mr-3 flex-shrink-0" />
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 me-3 flex-shrink-0" />
                   <span className="text-sm font-semibold text-gray-800">
                     {`${t.services.replacement.titlePrefix} ${t.services.replacement.titleSuffix}`}
                   </span>
@@ -199,7 +207,7 @@ const NavBar = () => {
                   onClick={closeMenus}
                   className="flex items-center p-3 rounded-xl hover:bg-gray-50 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 mr-3 flex-shrink-0" />
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 me-3 flex-shrink-0" />
                   <span className="text-sm font-semibold text-gray-800">
                     {`${t.services.restoration.titlePrefix} ${t.services.restoration.titleSuffix}`}
                   </span>
