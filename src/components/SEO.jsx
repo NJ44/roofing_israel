@@ -4,12 +4,12 @@ import { config } from '../config'
 
 // SEO metadata for each route
 const getPageMetadata = (pathname) => {
-  const baseTitle = 'יניב שיפוצים'
+  const baseTitle = 'לוגו'
   const city = config.CITY
 
   const metadataMap = {
     '/': {
-      title: `${baseTitle} | שירותי קירוי ואיטום גגות`,
+      title: `איטום גגות`,
       description: `שירותי קירוי ואיטום גגות מקצועיים ב${city}. תיקון גגות רעפים, החלפת גגות, ושיקום נזקי סערה. הצעת מחיר חינם.`
     },
     '/services/roof-repair': {

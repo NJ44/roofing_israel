@@ -64,7 +64,7 @@ const Hero = () => {
           speed={0.5}
           color="rgba(255, 255, 255, 0.4)"
           className="absolute inset-0 w-full h-full z-0"
-          lightningEnabled={true}
+          lightningEnabled={false}
           lightningFrequency={15}
           thunderEnabled={false}
           contentClassName="h-full w-full"

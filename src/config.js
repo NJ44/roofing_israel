@@ -1,6 +1,6 @@
 // CLIENT VARIABLES - Replace these with actual values
 export const config = {
-  BUSINESS_NAME: "יניב שיפוצים",
+  BUSINESS_NAME: "לוגו",
   TAGLINE: "שירותי קירוי אמינים לבית ולעסק",
   PRIMARY_COLOR: "#ea580c", // Orange-600
   ACCENT_COLOR: "#0f172a", // Slate-900

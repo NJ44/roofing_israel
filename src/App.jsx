@@ -32,8 +32,8 @@ function HomePage() {
     <>
       <Hero />
       <Services />
-      <TeamSection />
       <Testimonials />
+      <TeamSection />
       <FAQ />
       <LetsWorkTogether />
     </>

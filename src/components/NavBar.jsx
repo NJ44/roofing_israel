@@ -54,7 +54,7 @@ const NavBar = () => {
         {/* Mobile Burger Menu Button - positioned on the left */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors"
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-800 hover:bg-gray-200 transition-colors order-first"
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
@@ -66,7 +66,7 @@ const NavBar = () => {
 
         <Link
           to="/"
-          className="flex items-center flex-shrink-0 ms-auto md:ms-0"
+          className="flex items-center flex-shrink-0 ml-auto md:ml-0"
           onClick={(e) => {
             if (window.location.pathname === "/") {
               e.preventDefault();
@@ -150,7 +150,7 @@ const NavBar = () => {
         </div>
 
         {/* Desktop Book Now Button */}
-        <div className="hidden md:flex items-center ml-2 lg:ml-8 gap-3">
+        <div className="hidden md:flex items-center ml-1 gap-3">
           <button
             onClick={openDrawer}
             className="bg-primary text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap text-sm"
